@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 14:14:49 by madias-m          #+#    #+#             */
-/*   Updated: 2025/02/05 14:16:07 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/02/05 14:35:10 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,6 @@
 # define CUB3D_H
 
 # include <stdio.h>
+# include "../libft/libft.h"
 
 #endif
