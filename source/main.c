@@ -6,11 +6,14 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 14:07:08 by madias-m          #+#    #+#             */
-/*   Updated: 2025/02/05 14:07:21 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/02/05 14:33:15 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../include/cub3d.h"
+
 int main(void)
 {
-	return (1);
+	printf("ueh\n"); 
+	return (0);
 }
