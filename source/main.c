@@ -6,38 +6,20 @@
 /*   By: babischa <babischa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 14:07:08 by madias-m          #+#    #+#             */
-/*   Updated: 2025/02/10 15:54:05 by babischa         ###   ########.fr       */
+/*   Updated: 2025/02/10 17:43:20 by babischa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-t_game *game(void)
+t_game	*game(void)
 {
-	static	t_game *game;
+	static t_game	*game;
 
 	if (!game)
 		game = ft_calloc(1, sizeof(t_game));
 	return (game);
 }
-
-// void ft_randomize(void* param)
-// {
-// 	(void)param;
-// 	for (uint32_t i = 0; i < image->width; ++i)
-// 	{
-// 		for (uint32_t y = 0; y < image->height; ++y)
-// 		{
-// 			uint32_t color = ft_pixel(
-// 				rand() % 0xFF, // R
-// 				rand() % 0xFF, // G
-// 				rand() % 0xFF, // B
-// 				rand() % 0xFF  // A
-// 			);
-// 			mlx_put_pixel(image, i, y, color);
-// 		}
-// 	}
-// }
 
 void	put_background(void *param)
 {
@@ -60,12 +42,14 @@ void	put_background(void *param)
 
 void	init_data(void)
 {
-	if (!(game()->mlx = mlx_init(WIDTH, HEIGHT, "CUB3D", true)))
+	game()->mlx = mlx_init(WIDTH, HEIGHT, "CUB3D", true);
+	if (!(game()->mlx))
 	{
  		puts(mlx_strerror(mlx_errno));
  		return ;
  	}
-	if (!(game()->image = mlx_new_image(game()->mlx, WIDTH, HEIGHT)))
+	game()->image = mlx_new_image(game()->mlx, WIDTH, HEIGHT);
+	if (!game()->image)
 	{
  		puts(mlx_strerror(mlx_errno));
  		return ;
@@ -78,15 +62,18 @@ void	init_data(void)
 	}
 	game()->max_x = WIDTH;
 	game()->max_y = HEIGHT / 2;
+}
 
- 	mlx_loop_hook(game()->mlx, put_background, game()->mlx);
+void	finish_data()
+{
+	mlx_loop_hook(game()->mlx, put_background, game()->mlx);
  	mlx_loop(game()->mlx);
  	mlx_terminate(game()->mlx);
- 	return ;
 }
 
 int main(void)
 {
 	init_data();
+	finish_data();
 	return (0);
 }
