@@ -3,94 +3,77 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: babischa <babischa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 14:07:08 by madias-m          #+#    #+#             */
-/*   Updated: 2025/02/10 13:48:40 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/02/10 17:43:20 by babischa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-int main(void)
+t_game	*game(void)
 {
-	ft_printf("ueh\n%d\n", MAP[0][1]);
-	return (0);
+	static t_game	*game;
+
+	if (!game)
+		game = ft_calloc(1, sizeof(t_game));
+	return (game);
 }
 
+void	put_background(void *param)
+{
+	int	x;
+	int	y;
 
-// static mlx_image_t* image;
+	y = 0;
+	while (y < game()->max_y)
+	{
+		x = 0;
+		while (x < game()->max_x)
+		{
+			mlx_put_pixel(game()->image, x, y, BLUE);
+			x++;
+		}
+		y++;
+	}
+	(void)param;
+}
 
-// // -----------------------------------------------------------------------------
+void	init_data(void)
+{
+	game()->mlx = mlx_init(WIDTH, HEIGHT, "CUB3D", true);
+	if (!(game()->mlx))
+	{
+ 		puts(mlx_strerror(mlx_errno));
+ 		return ;
+ 	}
+	game()->image = mlx_new_image(game()->mlx, WIDTH, HEIGHT);
+	if (!game()->image)
+	{
+ 		puts(mlx_strerror(mlx_errno));
+ 		return ;
+ 	}
+	if (mlx_image_to_window(game()->mlx, game()->image, 0, 0) == -1)
+	{
+		mlx_close_window(game()->mlx);
+		puts(mlx_strerror(mlx_errno));
+		return ;
+	}
+	game()->max_x = WIDTH;
+	game()->max_y = HEIGHT / 2;
+}
 
-// int32_t ft_pixel(int32_t r, int32_t g, int32_t b, int32_t a)
-// {
-//     return (r << 24 | g << 16 | b << 8 | a);
-// }
+void	finish_data()
+{
+	mlx_loop_hook(game()->mlx, put_background, game()->mlx);
+ 	mlx_loop(game()->mlx);
+ 	mlx_terminate(game()->mlx);
+}
 
-// void ft_randomize(void* param)
-// {
-// 	(void)param;
-// 	for (uint32_t i = 0; i < image->width; ++i)
-// 	{
-// 		for (uint32_t y = 0; y < image->height; ++y)
-// 		{
-// 			uint32_t color = ft_pixel(
-// 				rand() % 0xFF, // R
-// 				rand() % 0xFF, // G
-// 				rand() % 0xFF, // B
-// 				rand() % 0xFF  // A
-// 			);
-// 			mlx_put_pixel(image, i, y, color);
-// 		}
-// 	}
-// }
-
-// void ft_hook(void* param)
-// {
-// 	mlx_t* mlx = param;
-
-// 	if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
-// 		mlx_close_window(mlx);
-// 	if (mlx_is_key_down(mlx, MLX_KEY_W))
-// 		image->instances[0].y -= 5;
-// 	if (mlx_is_key_down(mlx, MLX_KEY_S))
-// 		image->instances[0].y += 5;
-// 	if (mlx_is_key_down(mlx, MLX_KEY_A))
-// 		image->instances[0].x -= 5;
-// 	if (mlx_is_key_down(mlx, MLX_KEY_D))
-// 		image->instances[0].x += 5;
-// }
-
-// // -----------------------------------------------------------------------------
-
-// int32_t main(void)
-// {
-// 	mlx_t* mlx;
-
-// 	// Gotta error check this stuff
-// 	if (!(mlx = mlx_init(WIDTH, HEIGHT, "MLX42", true)))
-// 	{
-// 		puts(mlx_strerror(mlx_errno));
-// 		return(EXIT_FAILURE);
-// 	}
-// 	if (!(image = mlx_new_image(mlx, 256, 256)))
-// 	{
-// 		mlx_close_window(mlx);
-// 		puts(mlx_strerror(mlx_errno));
-// 		return(EXIT_FAILURE);
-// 	}
-// 	if (mlx_image_to_window(mlx, image, 256, 256) == -1)
-// 	{
-// 		mlx_close_window(mlx);
-// 		puts(mlx_strerror(mlx_errno));
-// 		return(EXIT_FAILURE);
-// 	}
-	
-// 	mlx_loop_hook(mlx, ft_randomize, mlx);
-// 	mlx_loop_hook(mlx, ft_hook, mlx);
-
-// 	mlx_loop(mlx);
-// 	mlx_terminate(mlx);
-// 	return (EXIT_SUCCESS);
-// }
+int main(void)
+{
+	init_data();
+	finish_data();
+	return (0);
+}
