@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: babischa <babischa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 14:14:49 by madias-m          #+#    #+#             */
-/*   Updated: 2025/02/10 13:57:58 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/02/10 15:53:12 by babischa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,22 @@
 #define MAX_Y 13
 #define MAX_X 24
 
+#define BLUE 0x99CCFF
+
 #define NO "./textures/north.png"
 #define SO "./textures/south.png"
 #define WE "./textures/west.png"
 #define EA "./textures/east.png"
+
+typedef struct s_game
+{
+	mlx_t		*mlx;
+	char		**map;
+	void		*win;
+	int			max_x;
+	int			max_y;
+	mlx_image_t	*image;
+}	t_game;
 
 int F[3] = {28,28,28};
 int C[3] = {105,105,105};
