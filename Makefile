@@ -12,7 +12,7 @@ LIBS_MLX    := $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
 
 HEADERS 	:=	-I ./include -I $(LIBFT)
 
-SRC_PUSH	:=	main
+SRC_PUSH	:=	main key_hook
 
 OBJ_PUSH	:=	$(addprefix objects/, $(addsuffix .o, $(SRC_PUSH)))
 
@@ -44,8 +44,6 @@ clean:
 
 fclean: clean
 	$(MAKE) -C $(LIBFT) fclean
-	rm -rf $(LIBMLX)/build
 	rm -rf $(CUB3D)
-	rm -rf $(LIBMLX)
 
 re: fclean all
