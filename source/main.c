@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 14:07:08 by madias-m          #+#    #+#             */
-/*   Updated: 2025/02/15 14:46:09 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/02/17 14:21:25 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,21 @@ int32_t ft_pixel(int32_t r, int32_t g, int32_t b, int32_t a)
     return (r << 24 | g << 16 | b << 8 | a);
 }
 
+void	erase_image(void)
+{
+	int y;
+	int x;
+
+	y = 0;
+	while (y < WIDTH)
+	{
+		x = 0;
+		while (x < HEIGHT)
+			mlx_put_pixel(game()->image, y, x, 0);
+		y++;
+	}
+}
+
 void	render_hook(void *param)
 {
 	int 	y;
@@ -98,6 +113,7 @@ void	render_hook(void *param)
 	
 	y = 0;
 	(void) param;
+	erase_image();
 	while (y < WIDTH)
 	{
 		cameraY = 2 * y / (double) WIDTH - 1;
