@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: babischa <babischa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 14:07:08 by madias-m          #+#    #+#             */
-/*   Updated: 2025/02/21 12:04:59 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/03/10 11:45:47 by babischa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,10 @@ void	init_data(void)
 	load_textures();
 }
 
-int main(void)
+int main(int argc, char **argv)
 {
 	init_data();
+	validate(argc, argv);
 	mlx_loop_hook(game()->mlx, render_loop, NULL);
 	mlx_loop_hook(game()->mlx, movement, game());
 	mlx_key_hook(game()->mlx, key_hook, NULL);
