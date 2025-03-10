@@ -6,13 +6,24 @@
 /*   By: babischa <babischa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 11:39:53 by babischa          #+#    #+#             */
-/*   Updated: 2025/03/10 12:03:34 by babischa         ###   ########.fr       */
+/*   Updated: 2025/03/10 12:31:04 by babischa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../include/cub3d.h"
+
 void	validate_extension(char *file)
 {
-	while (file)
+
+	while (*file)
+	{
+		if (!ft_strncmp(".cub", file, 5))
+			return;
+		file++;
+	}
+	printf("error: invalid map extension\n");
+	//funcao de saida
+	exit(2);
 }
 
 void	validate(int argc, char **argv)

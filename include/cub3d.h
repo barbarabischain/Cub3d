@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: babischa <babischa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 14:14:49 by madias-m          #+#    #+#             */
-/*   Updated: 2025/02/21 12:05:43 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/03/10 12:30:30 by babischa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,11 +92,14 @@ typedef struct s_game
 // int C[3] = {105,105,105};
 
 
-
 t_game	*game(void);
 void    key_hook(mlx_key_data_t key_data, void *param);
 void    render_loop(void *param);
 void	movement(void *param);
 void    load_textures(void);
+
+/*** Parsing ***/
+void	validate(int argc, char **argv);
+
 
 #endif
