@@ -1,5 +1,7 @@
 Corrigir:
 
-1. Apresentacao das texturas
+1. Apresentacao das texturas (feito)
 2. Olho de peixe
-3. norminette
+3. travas de movimento
+4. norminette
+

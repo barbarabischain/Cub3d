@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 14:14:49 by madias-m          #+#    #+#             */
-/*   Updated: 2025/02/21 12:05:43 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/03/10 17:03:59 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ typedef struct s_textures {
 
 typedef struct s_wall {
 	mlx_texture_t	*texture;
-	int				x;
+	double			x;
 	int				texX;
 	double			texStep;
 	double			texPos;

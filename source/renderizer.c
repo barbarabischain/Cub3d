@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 14:29:36 by madias-m          #+#    #+#             */
-/*   Updated: 2025/02/21 12:10:21 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/03/10 16:59:46 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,9 +176,9 @@ static void	draw_wall(int x, t_coordinates *coord)
 		wall.x = coord->posY + coord->perpWallDist * coord->rayDirY;
 	wall.x -= floor(wall.x);
 	wall.texX = (int) (wall.x * wall.texture->width);
-	if (coord->side == 1 && coord->rayDirY < 0)
+	if (coord->side == 1 && coord->rayDirY > 0)
 		wall.texX = wall.texture->width - wall.texX - 1;
-	if (coord->side == 0 && coord->rayDirX > 0)
+	else if (coord->side == 0 && coord->rayDirX < 0)
 		wall.texX = wall.texture->width - wall.texX - 1;
 	wall.texStep = 1.0 * wall.texture->height / coord->lineHeight;
 	wall.texPos = (coord->drawStart - HEIGHT / 2 + coord->lineHeight / 2) * wall.texStep;
