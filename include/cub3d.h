@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 14:14:49 by madias-m          #+#    #+#             */
-/*   Updated: 2025/03/10 17:03:59 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/03/11 16:34:16 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # include "../MLX42/include/MLX42/MLX42.h"
 # include <math.h>
 
-#define WIDTH 512
-#define HEIGHT 512
+#define WIDTH 800
+#define HEIGHT 800
 
 #define MAX_Y 24
 #define MAX_X 24
@@ -86,6 +86,8 @@ typedef struct s_game
 	char		    key_a;
 	char		    key_s;
 	char		    key_d;
+	char			key_right;
+	char			key_left;
 }	t_game;
 
 // int F[3] = {28,28,28};
@@ -96,7 +98,7 @@ typedef struct s_game
 t_game	*game(void);
 void    key_hook(mlx_key_data_t key_data, void *param);
 void    render_loop(void *param);
-void	movement(void *param);
+void	new_movement(void *param);
 void    load_textures(void);
 
 #endif

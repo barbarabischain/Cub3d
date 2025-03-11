@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 14:32:56 by madias-m          #+#    #+#             */
-/*   Updated: 2025/02/21 12:08:19 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/03/11 16:34:09 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,45 +39,64 @@ int MAP_b[MAX_Y][MAX_X] = {
   {4,4,4,4,4,4,4,4,4,4,1,1,1,2,2,2,2,2,2,3,3,3,3,3}
 };
 
-void	movement(void *param)
+void	calc_next_pos(double *nextPosX, double *nextPosY)
 {
-	t_game	*data;
-	double	moveSpeed;
-	double	rotSpeed;
+	double moveSpeed;
 
-	data = (t_game *)param;
-	moveSpeed = data->mlx->delta_time * 5.0;
-	rotSpeed = data->mlx->delta_time * 3.0;
-	if (data->key_w)
+	moveSpeed = game()->mlx->delta_time * 5.0;
+	if (game()->key_w)
 	{
-		if(MAP_b[(int) (data->coord->posX + data->coord->dirX * moveSpeed)][(int)data->coord->posY] == false) 
-			data->coord->posX += data->coord->dirX * moveSpeed;
-      	if(MAP_b[(int) data->coord->posX][(int) (data->coord->posY + data->coord->dirY * moveSpeed)] == false) 
-			data->coord->posY += data->coord->dirY * moveSpeed;
+		*nextPosX = (game()->coord->posX + game()->coord->dirX * moveSpeed);
+		*nextPosY = (game()->coord->posY + game()->coord->dirY * moveSpeed);
 	}
-	if (data->key_s)
+	if (game()->key_s)
+	{	
+		*nextPosX = (game()->coord->posX - game()->coord->dirX * moveSpeed);
+		*nextPosY = (game()->coord->posY - game()->coord->dirY * moveSpeed);
+	}
+	if (game()->key_a)
 	{
-		if(MAP_b[(int) (data->coord->posX + data->coord->dirX * moveSpeed)][(int)data->coord->posY] == false) 
-			data->coord->posX -= data->coord->dirX * moveSpeed;
-      	if(MAP_b[(int) data->coord->posX][(int) (data->coord->posY + data->coord->dirY * moveSpeed)] == false) 
-			data->coord->posY -= data->coord->dirY * moveSpeed;
+		*nextPosX = (game()->coord->posX - game()->coord->planeX * moveSpeed);
+		*nextPosY = (game()->coord->posY - game()->coord->planeY * moveSpeed);
 	}
-	if (data->key_d)
+	if (game()->key_d)
 	{
-		double oldDirX = data->coord->dirX;
-		data->coord->dirX = data->coord->dirX * cos(-rotSpeed) - data->coord->dirY * sin(-rotSpeed);
-		data->coord->dirY = oldDirX * sin(-rotSpeed) + data->coord->dirY * cos(-rotSpeed);
-		double oldPlaneX = data->coord->planeX;
-		data->coord->planeX = data->coord->planeX * cos(-rotSpeed) - data->coord->planeY * sin(-rotSpeed);
-		data->coord->planeY = oldPlaneX * sin(-rotSpeed) + data->coord->planeY * cos(-rotSpeed);
+		*nextPosX = game()->coord->posX + game()->coord->planeX * moveSpeed;
+		*nextPosY = game()->coord->posY + game()->coord->planeY * moveSpeed;
 	}
-	if (data->key_a)
-	{
-		double oldDirX = data->coord->dirX;
-		data->coord->dirX = data->coord->dirX * cos(rotSpeed) - data->coord->dirY * sin(rotSpeed);
-		data->coord->dirY = oldDirX * sin(rotSpeed) + data->coord->dirY * cos(rotSpeed);
-		double oldPlaneX = data->coord->planeX;
-		data->coord->planeX = data->coord->planeX * cos(rotSpeed) - data->coord->planeY * sin(rotSpeed);
-		data->coord->planeY = oldPlaneX * sin(rotSpeed) + data->coord->planeY * cos(rotSpeed);
-	}
+}
+
+void	rotate_camera(char dir)
+{
+	double	rotSpeed;
+	double	backup;
+	t_coordinates	*coord;
+	
+	coord = game()->coord;
+	rotSpeed = game()->mlx->delta_time * 3.0;
+	backup = coord->dirX;
+	coord->dirX = coord->dirX * cos(rotSpeed * dir) - coord->dirY * sin(rotSpeed * dir);
+	coord->dirY = backup * sin(rotSpeed * dir) + coord->dirY * cos(rotSpeed * dir);
+	backup = coord->planeX;
+	coord->planeX = coord->planeX * cos(rotSpeed * dir) - coord->planeY * sin(rotSpeed * dir);
+	coord->planeY = backup * sin(rotSpeed * dir) + coord->planeY * cos(rotSpeed * dir);
+}
+
+void	new_movement(void * param)
+{
+	double nextPosX;
+	double nextPosY;
+	
+	(void) param;
+	nextPosX = 0;
+	nextPosY = 0;
+	calc_next_pos(&nextPosX, &nextPosY);
+	if (MAP_b[(int) game()->coord->posX][(int) nextPosY] == 0)
+		game()->coord->posY = nextPosY;
+	if (MAP_b[(int) nextPosX][(int) game()->coord->posY] == 0)
+		game()->coord->posX = nextPosX;
+	if (game()->key_right)
+		rotate_camera(-1);
+	if (game()->key_left)
+		rotate_camera(1);	
 }

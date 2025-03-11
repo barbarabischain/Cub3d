@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 14:29:36 by madias-m          #+#    #+#             */
-/*   Updated: 2025/03/10 16:59:46 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/03/11 12:52:21 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,14 @@ static void	erase_image(void)
 	{
 		x = 0;
 		while (x < WIDTH)
-			mlx_put_pixel(game()->image, x++, y, 0);
+			mlx_put_pixel(game()->image, x++, y, 451604479);
 		y++;
 	}
 	while (y < HEIGHT)
 	{
 		x = 0;
 		while (x < WIDTH)
-			mlx_put_pixel(game()->image, x++, y, 451604479); // horizon
+			mlx_put_pixel(game()->image, x++, y, 0); // horizon
 		y++;
 	}
 }
