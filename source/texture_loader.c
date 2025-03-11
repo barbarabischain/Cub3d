@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 15:45:22 by madias-m          #+#    #+#             */
-/*   Updated: 2025/02/17 16:24:07 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/03/11 16:36:18 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 mlx_texture_t	*load(char *texture_path)
 {
-	mlx_texture_t *texture;
+	mlx_texture_t	*texture;
 
 	texture = mlx_load_png(texture_path);
 	if (!texture)
@@ -29,6 +29,3 @@ void	load_textures(void)
 	game()->textures->east_tex = load(EA);
 	game()->textures->west_tex = load(WE);
 }
-
-
-

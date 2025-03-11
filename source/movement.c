@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 14:32:56 by madias-m          #+#    #+#             */
-/*   Updated: 2025/03/11 16:34:09 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/03/11 16:49:05 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,62 +41,62 @@ int MAP_b[MAX_Y][MAX_X] = {
 
 void	calc_next_pos(double *nextPosX, double *nextPosY)
 {
-	double moveSpeed;
+	double	spd;
 
-	moveSpeed = game()->mlx->delta_time * 5.0;
+	spd = game()->mlx->delta_time * 5.0;
 	if (game()->key_w)
 	{
-		*nextPosX = (game()->coord->posX + game()->coord->dirX * moveSpeed);
-		*nextPosY = (game()->coord->posY + game()->coord->dirY * moveSpeed);
+		*nextPosX = (game()->coord->posX + game()->coord->dirX * spd);
+		*nextPosY = (game()->coord->posY + game()->coord->dirY * spd);
 	}
 	if (game()->key_s)
 	{	
-		*nextPosX = (game()->coord->posX - game()->coord->dirX * moveSpeed);
-		*nextPosY = (game()->coord->posY - game()->coord->dirY * moveSpeed);
+		*nextPosX = (game()->coord->posX - game()->coord->dirX * spd);
+		*nextPosY = (game()->coord->posY - game()->coord->dirY * spd);
 	}
 	if (game()->key_a)
 	{
-		*nextPosX = (game()->coord->posX - game()->coord->planeX * moveSpeed);
-		*nextPosY = (game()->coord->posY - game()->coord->planeY * moveSpeed);
+		*nextPosX = (game()->coord->posX - game()->coord->planeX * spd);
+		*nextPosY = (game()->coord->posY - game()->coord->planeY * spd);
 	}
 	if (game()->key_d)
 	{
-		*nextPosX = game()->coord->posX + game()->coord->planeX * moveSpeed;
-		*nextPosY = game()->coord->posY + game()->coord->planeY * moveSpeed;
+		*nextPosX = game()->coord->posX + game()->coord->planeX * spd;
+		*nextPosY = game()->coord->posY + game()->coord->planeY * spd;
 	}
 }
 
 void	rotate_camera(char dir)
 {
-	double	rotSpeed;
-	double	backup;
-	t_coordinates	*coord;
-	
-	coord = game()->coord;
-	rotSpeed = game()->mlx->delta_time * 3.0;
-	backup = coord->dirX;
-	coord->dirX = coord->dirX * cos(rotSpeed * dir) - coord->dirY * sin(rotSpeed * dir);
-	coord->dirY = backup * sin(rotSpeed * dir) + coord->dirY * cos(rotSpeed * dir);
-	backup = coord->planeX;
-	coord->planeX = coord->planeX * cos(rotSpeed * dir) - coord->planeY * sin(rotSpeed * dir);
-	coord->planeY = backup * sin(rotSpeed * dir) + coord->planeY * cos(rotSpeed * dir);
+	double			spd;
+	double			backup;
+	t_coordinates	*crd;
+
+	crd = game()->coord;
+	spd = game()->mlx->delta_time * 3.0;
+	backup = crd->dirX;
+	crd->dirX = crd->dirX * cos(spd * dir) - crd->dirY * sin(spd * dir);
+	crd->dirY = backup * sin(spd * dir) + crd->dirY * cos(spd * dir);
+	backup = crd->planeX;
+	crd->planeX = crd->planeX * cos(spd * dir) - crd->planeY * sin(spd * dir);
+	crd->planeY = backup * sin(spd * dir) + crd->planeY * cos(spd * dir);
 }
 
-void	new_movement(void * param)
+void	new_movement(void *param)
 {
-	double nextPosX;
-	double nextPosY;
-	
+	double	next_pos_x;
+	double	next_pos_y;
+
 	(void) param;
-	nextPosX = 0;
-	nextPosY = 0;
-	calc_next_pos(&nextPosX, &nextPosY);
-	if (MAP_b[(int) game()->coord->posX][(int) nextPosY] == 0)
-		game()->coord->posY = nextPosY;
-	if (MAP_b[(int) nextPosX][(int) game()->coord->posY] == 0)
-		game()->coord->posX = nextPosX;
+	next_pos_x = 0;
+	next_pos_y = 0;
+	calc_next_pos(&next_pos_x, &next_pos_y);
+	if (MAP_b[(int) game()->coord->posX][(int) next_pos_y] == 0)
+		game()->coord->posY = next_pos_y;
+	if (MAP_b[(int) next_pos_x][(int) game()->coord->posY] == 0)
+		game()->coord->posX = next_pos_x;
 	if (game()->key_right)
 		rotate_camera(-1);
 	if (game()->key_left)
-		rotate_camera(1);	
+		rotate_camera(1);
 }

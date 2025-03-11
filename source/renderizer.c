@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 14:29:36 by madias-m          #+#    #+#             */
-/*   Updated: 2025/03/11 12:52:21 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/03/11 16:53:01 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ int MAP[MAX_Y][MAX_X] = {
 
 static void	erase_image(void)
 {
-	int y;
-	int x;
+	int	y;
+	int	x;
 
 	y = 0;
 	while (y < HEIGHT / 2)
@@ -56,12 +56,12 @@ static void	erase_image(void)
 	{
 		x = 0;
 		while (x < WIDTH)
-			mlx_put_pixel(game()->image, x++, y, 0); // horizon
+			mlx_put_pixel(game()->image, x++, y, 0);
 		y++;
 	}
 }
 
-static void calc_position_direction(int x, t_coordinates *coord)
+static void	calc_position_direction(int x, t_coordinates *coord)
 {
 	coord->rayDirX = coord->dirX + coord->planeX * (2 * x / (double) WIDTH - 1);
 	coord->rayDirY = coord->dirY + coord->planeY * (2 * x / (double) WIDTH - 1);
@@ -91,10 +91,10 @@ static void calc_position_direction(int x, t_coordinates *coord)
 	}
 }
 
-static void process_dda(t_coordinates *coord)
+static void	process_dda(t_coordinates *coord)
 {
-	char hit;
-	
+	char	hit;
+
 	hit = 0;
 	while (hit == 0)
 	{
@@ -115,13 +115,13 @@ static void process_dda(t_coordinates *coord)
 	}
 }
 
-static void calc_perpendicular_ray(t_coordinates *coord)
+static void	calc_perpendicular_ray(t_coordinates *coord)
 {	
-  	if (coord->side == 0)
+	if (coord->side == 0)
 		coord->perpWallDist = (coord->sideDistX - coord->deltaDistX);
 	else
 		coord->perpWallDist = (coord->sideDistY - coord->deltaDistY);
-	coord->lineHeight = (int) (HEIGHT / coord->perpWallDist);
+	coord->lineHeight = (int)(HEIGHT / coord->perpWallDist);
 	coord->drawStart = -coord->lineHeight / 2 + HEIGHT / 2;
 	coord->drawEnd = coord->lineHeight / 2 + HEIGHT / 2;
 	if (coord->drawStart < 0)
@@ -149,9 +149,9 @@ static mlx_texture_t	*get_texture(void)
 	return (0);
 }
 
-static uint32_t			get_texture_color(mlx_texture_t *texture, int y, int x)
+static uint32_t	get_texture_color(mlx_texture_t *texture, int y, int x)
 {
-	uint8_t	*pixel;
+	uint8_t		*pixel;
 	int			texture_pos;
 
 	if (x < 0 || x >= (int) texture->width || y < 0 || y >= (int) texture->height)
@@ -166,7 +166,7 @@ static void	draw_wall(int x, t_coordinates *coord)
 {
 	t_wall		wall;
 	int			y;
-	int			texY;
+	int			tex_y;
 	uint32_t	color;
 
 	wall.texture = get_texture();
@@ -175,7 +175,7 @@ static void	draw_wall(int x, t_coordinates *coord)
 	else
 		wall.x = coord->posY + coord->perpWallDist * coord->rayDirY;
 	wall.x -= floor(wall.x);
-	wall.texX = (int) (wall.x * wall.texture->width);
+	wall.texX = (int)(wall.x * wall.texture->width);
 	if (coord->side == 1 && coord->rayDirY > 0)
 		wall.texX = wall.texture->width - wall.texX - 1;
 	else if (coord->side == 0 && coord->rayDirX < 0)
@@ -185,27 +185,26 @@ static void	draw_wall(int x, t_coordinates *coord)
 	y = coord->drawStart;
 	while (y < coord->drawEnd)
 	{
-		texY = (int) wall.texPos;
-		if (texY < 0)
-			texY = 0;
-		if (texY >= (int) wall.texture->height)
-			texY = wall.texture->height - 1;
+		tex_y = (int)wall.texPos;
+		if (tex_y < 0)
+			tex_y = 0;
+		if (tex_y >= (int) wall.texture->height)
+			tex_y = wall.texture->height - 1;
 		wall.texPos += wall.texStep;
-		color = get_texture_color(wall.texture, texY, wall.texX);
+		color = get_texture_color(wall.texture, tex_y, wall.texX);
 		mlx_put_pixel(game()->image, x, y++, color);
 	}
 }
 
 void	render_loop(void *param)
 {
-	int x;
-	
+	int	x;
+
 	(void)param;
 	erase_image();
 	x = 0;
 	while (x < WIDTH)
 	{
-		
 		calc_position_direction(x, game()->coord);
 		process_dda(game()->coord);
 		calc_perpendicular_ray(game()->coord);
@@ -213,4 +212,3 @@ void	render_loop(void *param)
 		x++;
 	}
 }
-

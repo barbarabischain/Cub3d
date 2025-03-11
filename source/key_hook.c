@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 18:03:09 by madias-m          #+#    #+#             */
-/*   Updated: 2025/03/11 15:51:32 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/03/11 16:39:14 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	key_pressed_handle(mlx_key_data_t key_data)
 		game()->key_right = 1;
 }
 
-static void key_release_handle(mlx_key_data_t key_data)
+static void	key_release_handle(mlx_key_data_t key_data)
 {
 	ft_printf("released\n");
 	if (key_data.key == MLX_KEY_W)
