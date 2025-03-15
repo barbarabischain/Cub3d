@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 14:32:56 by madias-m          #+#    #+#             */
-/*   Updated: 2025/03/11 16:49:05 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/03/14 20:59:56 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	calc_next_pos(double *nextPosX, double *nextPosY)
 {
 	double	spd;
 
-	spd = game()->mlx->delta_time * 5.0;
+	spd = game()->mlx->delta_time * 7.0;
 	if (game()->key_w)
 	{
 		*nextPosX = (game()->coord->posX + game()->coord->dirX * spd);
