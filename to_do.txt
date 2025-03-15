@@ -1,7 +1,5 @@
 Corrigir:
 
-1. Apresentacao das texturas (feito)
-2. Olho de peixe
-3. travas de movimento
-4. norminette
+- minimapa
+- resize
 
