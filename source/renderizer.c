@@ -6,7 +6,7 @@
 /*   By: babischa <babischa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 14:29:36 by madias-m          #+#    #+#             */
-/*   Updated: 2025/03/17 13:57:01 by babischa         ###   ########.fr       */
+/*   Updated: 2025/03/17 19:39:24 by babischa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,14 @@ static void	erase_image(void)
 	{
 		x = 0;
 		while (x < WIDTH)
-			mlx_put_pixel(game()->image, x++, y, 451604479);
+			mlx_put_pixel(game()->image, x++, y, game()->ceiling);
 		y++;
 	}
 	while (y < HEIGHT)
 	{
 		x = 0;
 		while (x < WIDTH)
-			mlx_put_pixel(game()->image, x++, y, 0); // horizon
+			mlx_put_pixel(game()->image, x++, y,  game()->floor); // horizon
 		y++;
 	}
 }

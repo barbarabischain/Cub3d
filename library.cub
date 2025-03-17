@@ -1,5 +1,5 @@
-F 139,99,58
-C 171,154,137
+F 69, 75,27
+C 135 ,206,235
 
 NO ./textures/north.png
 SO ./textures/south.png

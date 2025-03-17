@@ -6,7 +6,7 @@
 /*   By: babischa <babischa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 14:01:20 by babischa          #+#    #+#             */
-/*   Updated: 2025/03/17 18:51:37 by babischa         ###   ########.fr       */
+/*   Updated: 2025/03/17 19:44:41 by babischa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ char	**process_line(char	*line)
 	free(trim_line);
 	if ((!rgb || !rgb[0] || !rgb[1] || !rgb[2]))
 	{
-		printf("entrei aqui1!!!\n");
+		printf("entrei aqui1!!!\n"); //remover
 		color_error(rgb, line);
 	}
 
@@ -71,10 +71,10 @@ void	handle_color(char *line, uint32_t *color)
 	i = 0;
 	while (rgb[i])
 	{
-		tmp	= ft_strtrim(rgb[i], "\t\v\f\n\b");
+		tmp	= ft_strtrim(rgb[i], " \t\v\f\n\b");
 		if (!is_valid_color(tmp))
 		{
-			printf("entrei aqui 2\n");
+			printf("entrei aqui 2\n"); //remover
 			free(tmp);
 			color_error(rgb, line);
 		}

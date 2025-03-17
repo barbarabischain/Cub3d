@@ -6,7 +6,7 @@
 /*   By: babischa <babischa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 14:07:08 by madias-m          #+#    #+#             */
-/*   Updated: 2025/03/17 19:06:35 by babischa         ###   ########.fr       */
+/*   Updated: 2025/03/17 19:38:04 by babischa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ void	init_data(void)
 		puts(mlx_strerror(mlx_errno));
 		return ;
 	}
-	game()->ceiling1 = -42;
-	game()->floor1 = -42;
+	game()->ceiling = -42;
+	game()->floor = -42;
 	game()->textures = ft_calloc(1, sizeof(t_textures));
 	game()->coord = ft_calloc(1, sizeof(t_coordinates));
 	game()->coord->posX = 22;
@@ -59,7 +59,6 @@ int main(int argc, char **argv)
 {
 	init_data();
 	validate(argc, argv);
-	load_textures();
 	mlx_loop_hook(game()->mlx, render_loop, NULL);
 	mlx_loop_hook(game()->mlx, movement, game());
 	mlx_key_hook(game()->mlx, key_hook, NULL);

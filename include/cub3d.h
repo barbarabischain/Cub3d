@@ -6,7 +6,7 @@
 /*   By: babischa <babischa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 14:14:49 by madias-m          #+#    #+#             */
-/*   Updated: 2025/03/17 19:23:44 by babischa         ###   ########.fr       */
+/*   Updated: 2025/03/17 19:36:27 by babischa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,10 +85,10 @@ typedef struct s_game
 	char		    key_a;
 	char		    key_s;
 	char		    key_d;
-	int				floor[3];
-	int				ceiling[3];
-	uint32_t		floor1;
-	uint32_t		ceiling1;
+	// int				floor[3];
+	// int				ceiling[3];
+	uint32_t		floor;
+	uint32_t		ceiling;
 
 }	t_game;
 

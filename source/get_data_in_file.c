@@ -6,7 +6,7 @@
 /*   By: babischa <babischa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 14:07:43 by babischa          #+#    #+#             */
-/*   Updated: 2025/03/17 19:33:20 by babischa         ###   ########.fr       */
+/*   Updated: 2025/03/17 19:36:11 by babischa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ void	search_in_file(char *line)
 	else if (!ft_strncmp("EA", line, 2))
 		handle_texture(line, &game()->textures->east_path);
 	else if (!ft_strncmp("F", line, 1))
-		handle_color(line, &game()->floor1);
+		handle_color(line, &game()->floor);
 	else if (!ft_strncmp("C", line, 1))
-		handle_color(line, &game()->ceiling1);
+		handle_color(line, &game()->ceiling);
 	//else if (ft_strncmp("1", line, 1))
 	//	handle_map(line);
 }
@@ -46,5 +46,6 @@ void	get_data_in_file(int fd)
 		free(line);
 		line = get_next_line(fd);
 	}
+	load_textures();
 	//check_data(); verificar se os dados foram corretamente inseridos
 }
