@@ -6,7 +6,7 @@
 /*   By: babischa <babischa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 14:14:49 by madias-m          #+#    #+#             */
-/*   Updated: 2025/03/10 12:30:30 by babischa         ###   ########.fr       */
+/*   Updated: 2025/03/17 11:33:46 by babischa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,15 @@
 
 #define BLUE 0x99CCFF
 
-#define NO "./textures/north.png"
-#define SO "./textures/south.png"
-#define WE "./textures/west.png"
-#define EA "./textures/east.png"
-
 typedef struct s_textures {
-  mlx_texture_t  *north_tex;
-  mlx_texture_t  *south_tex;
-  mlx_texture_t  *east_tex;
-  mlx_texture_t  *west_tex;
+	char			*north_path;
+	char			*south_path;
+	char			*east_path;
+	char			*west_path;
+	mlx_texture_t	*north_tex;
+	mlx_texture_t	*south_tex;
+	mlx_texture_t	*east_tex;
+	mlx_texture_t	*west_tex;
 } t_textures;
 
 typedef struct s_wall {
@@ -86,6 +85,8 @@ typedef struct s_game
 	char		    key_a;
 	char		    key_s;
 	char		    key_d;
+	int				floor[3];
+	int				ceiling[3];
 }	t_game;
 
 // int F[3] = {28,28,28};
@@ -100,6 +101,11 @@ void    load_textures(void);
 
 /*** Parsing ***/
 void	validate(int argc, char **argv);
+void	manage_error(char *error);
+void	get_data_in_file(int fd);
+
+/*** Parsing Utils ***/
+void	free_matrix(char **matrix);
 
 
 #endif

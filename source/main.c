@@ -6,7 +6,7 @@
 /*   By: babischa <babischa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 14:07:08 by madias-m          #+#    #+#             */
-/*   Updated: 2025/03/10 12:27:25 by babischa         ###   ########.fr       */
+/*   Updated: 2025/03/17 11:43:15 by babischa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,17 +51,16 @@ void	init_data(void)
 	game()->coord->dirY = 0;
 	game()->coord->planeX = 0.0;
 	game()->coord->planeY = 0.66;
-	load_textures();
 }
 
 int main(int argc, char **argv)
 {
-	//init_data();
+	init_data();
 	validate(argc, argv);
-	// mlx_loop_hook(game()->mlx, render_loop, NULL);
-	// mlx_loop_hook(game()->mlx, movement, game());
-	// mlx_key_hook(game()->mlx, key_hook, NULL);
-	// mlx_loop(game()->mlx);
-	// mlx_terminate(game()->mlx);
+	mlx_loop_hook(game()->mlx, render_loop, NULL);
+	mlx_loop_hook(game()->mlx, movement, game());
+	mlx_key_hook(game()->mlx, key_hook, NULL);
+	mlx_loop(game()->mlx);
+	mlx_terminate(game()->mlx);
 	return (0);
 }

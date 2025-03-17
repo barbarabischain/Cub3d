@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture_loader.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: babischa <babischa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 15:45:22 by madias-m          #+#    #+#             */
-/*   Updated: 2025/02/17 16:24:07 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/03/17 11:43:08 by babischa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,8 @@ mlx_texture_t	*load(char *texture_path)
 
 void	load_textures(void)
 {
-	game()->textures->north_tex = load(NO);
-	game()->textures->south_tex = load(SO);
-	game()->textures->east_tex = load(EA);
-	game()->textures->west_tex = load(WE);
+	game()->textures->north_tex = load(game()->textures->north_path);
+	game()->textures->south_tex = load(game()->textures->south_path);
+	game()->textures->east_tex = load(game()->textures->east_path);
+	game()->textures->west_tex = load(game()->textures->west_path);
 }
-
-
-
