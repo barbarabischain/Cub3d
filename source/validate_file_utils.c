@@ -6,7 +6,7 @@
 /*   By: babischa <babischa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 15:31:12 by babischa          #+#    #+#             */
-/*   Updated: 2025/03/14 16:21:20 by babischa         ###   ########.fr       */
+/*   Updated: 2025/03/17 19:23:34 by babischa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,9 @@ int	count_lines(int fd)
 	}
 	close (fd);
 	return (count);
+}
+
+int	ft_isspace(char c)
+{
+	return ((c >= 9 && c <= 13) || c == 32);
 }

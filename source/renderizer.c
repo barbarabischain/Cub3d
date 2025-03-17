@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   renderizer.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: babischa <babischa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 14:29:36 by madias-m          #+#    #+#             */
-/*   Updated: 2025/02/21 12:10:21 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/03/17 13:57:01 by babischa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,14 @@ static void	erase_image(void)
 	{
 		x = 0;
 		while (x < WIDTH)
-			mlx_put_pixel(game()->image, x++, y, 0);
+			mlx_put_pixel(game()->image, x++, y, 451604479);
 		y++;
 	}
 	while (y < HEIGHT)
 	{
 		x = 0;
 		while (x < WIDTH)
-			mlx_put_pixel(game()->image, x++, y, 451604479); // horizon
+			mlx_put_pixel(game()->image, x++, y, 0); // horizon
 		y++;
 	}
 }
@@ -94,7 +94,7 @@ static void calc_position_direction(int x, t_coordinates *coord)
 static void process_dda(t_coordinates *coord)
 {
 	char hit;
-	
+
 	hit = 0;
 	while (hit == 0)
 	{
@@ -116,7 +116,7 @@ static void process_dda(t_coordinates *coord)
 }
 
 static void calc_perpendicular_ray(t_coordinates *coord)
-{	
+{
   	if (coord->side == 0)
 		coord->perpWallDist = (coord->sideDistX - coord->deltaDistX);
 	else
@@ -199,13 +199,13 @@ static void	draw_wall(int x, t_coordinates *coord)
 void	render_loop(void *param)
 {
 	int x;
-	
+
 	(void)param;
 	erase_image();
 	x = 0;
 	while (x < WIDTH)
 	{
-		
+
 		calc_position_direction(x, game()->coord);
 		process_dda(game()->coord);
 		calc_perpendicular_ray(game()->coord);
@@ -213,4 +213,3 @@ void	render_loop(void *param)
 		x++;
 	}
 }
-
