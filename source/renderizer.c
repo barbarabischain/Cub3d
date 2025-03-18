@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 14:29:36 by madias-m          #+#    #+#             */
-/*   Updated: 2025/03/14 20:59:35 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/03/18 11:21:27 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,17 +45,18 @@ static void	erase_image(void)
 	int	x;
 
 	y = 0;
-	while (y < HEIGHT / 2)
+	mlx_resize_image(game()->image, game()->mlx->width, game()->mlx->height);
+	while (y < game()->mlx->height / 2)
 	{
 		x = 0;
-		while (x < WIDTH)
+		while (x < game()->mlx->width)
 			mlx_put_pixel(game()->image, x++, y, 451604479);
 		y++;
 	}
-	while (y < HEIGHT)
+	while (y < game()->mlx->height)
 	{
 		x = 0;
-		while (x < WIDTH)
+		while (x < game()->mlx->width)
 			mlx_put_pixel(game()->image, x++, y, 0);
 		y++;
 	}
@@ -63,8 +64,8 @@ static void	erase_image(void)
 
 static void	calc_position_direction(int x, t_coordinates *coord)
 {
-	coord->rayDirX = coord->dirX + coord->planeX * (2 * x / (double) WIDTH - 1);
-	coord->rayDirY = coord->dirY + coord->planeY * (2 * x / (double) WIDTH - 1);
+	coord->rayDirX = coord->dirX + coord->planeX * (2 * x / (double) game()->mlx->width - 1);
+	coord->rayDirY = coord->dirY + coord->planeY * (2 * x / (double) game()->mlx->width - 1);
 	coord->deltaDistX = sqrt(1 + (coord->rayDirY * coord->rayDirY) / (coord->rayDirX * coord->rayDirX));
 	coord->deltaDistY = sqrt(1 + (coord->rayDirX * coord->rayDirX) / (coord->rayDirY * coord->rayDirY));
 	coord->mapX = (int) coord->posX;
@@ -121,13 +122,13 @@ static void	calc_perpendicular_ray(t_coordinates *coord)
 		coord->perpWallDist = (coord->sideDistX - coord->deltaDistX);
 	else
 		coord->perpWallDist = (coord->sideDistY - coord->deltaDistY);
-	coord->lineHeight = (int)(HEIGHT / coord->perpWallDist);
-	coord->drawStart = -coord->lineHeight / 2 + HEIGHT / 2;
-	coord->drawEnd = coord->lineHeight / 2 + HEIGHT / 2;
+	coord->lineHeight = (int)(game()->mlx->height / coord->perpWallDist);
+	coord->drawStart = -coord->lineHeight / 2 + game()->mlx->height / 2;
+	coord->drawEnd = coord->lineHeight / 2 + game()->mlx->height / 2;
 	if (coord->drawStart < 0)
 		coord->drawStart = 0;
-	if (coord->drawEnd > HEIGHT)
-		coord->drawEnd = HEIGHT - 1;
+	if (coord->drawEnd > game()->mlx->height)
+		coord->drawEnd = game()->mlx->height - 1;
 }
 
 static mlx_texture_t	*get_texture(void)
@@ -181,7 +182,7 @@ static void	draw_wall(int x, t_coordinates *coord)
 	else if (coord->side == 0 && coord->rayDirX < 0)
 		wall.texX = wall.texture->width - wall.texX - 1;
 	wall.texStep = 1.0 * wall.texture->height / coord->lineHeight;
-	wall.texPos = (coord->drawStart - HEIGHT / 2 + coord->lineHeight / 2) * wall.texStep;
+	wall.texPos = (coord->drawStart - game()->mlx->height / 2 + coord->lineHeight / 2) * wall.texStep;
 	y = coord->drawStart;
 	while (y < coord->drawEnd)
 	{
@@ -203,7 +204,7 @@ void	render_loop(void *param)
 	(void)param;
 	erase_image();
 	x = 0;
-	while (x < WIDTH)
+	while (x < game()->mlx->width)
 	{
 		calc_position_direction(x, game()->coord);
 		process_dda(game()->coord);
