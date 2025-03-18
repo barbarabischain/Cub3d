@@ -6,7 +6,7 @@
 /*   By: babischa <babischa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 15:45:22 by madias-m          #+#    #+#             */
-/*   Updated: 2025/03/17 19:06:00 by babischa         ###   ########.fr       */
+/*   Updated: 2025/03/18 11:48:53 by babischa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,16 @@ void	load_textures(void)
 
 int	is_valid_path(char *path)
 {
-	int	fd;
+	int		fd;
+	char	*ext;
 
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
 		return (0);
 	close (fd);
+	ext = ft_strrchr(path, '.');
+	if (!ext || ft_strncmp(ext, ".png", 4))
+		return (0);
 	return (1);
 }
 
