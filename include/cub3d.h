@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 14:14:49 by madias-m          #+#    #+#             */
-/*   Updated: 2025/03/11 16:34:16 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/03/18 14:38:51 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,5 +100,6 @@ void    key_hook(mlx_key_data_t key_data, void *param);
 void    render_loop(void *param);
 void	new_movement(void *param);
 void    load_textures(void);
+void	close_window(void *param);
 
 #endif

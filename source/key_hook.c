@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 18:03:09 by madias-m          #+#    #+#             */
-/*   Updated: 2025/03/11 17:20:31 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/03/18 14:38:42 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,9 @@ static void	key_release_handle(mlx_key_data_t key_data)
 void	key_hook(mlx_key_data_t key_data, void *param)
 {
 	(void)param;
-	if (key_data.action == MLX_PRESS || key_data.action == MLX_REPEAT)
+	if (key_data.key == MLX_KEY_ESCAPE && key_data.action == MLX_PRESS)
+		close_window(NULL);
+	else if (key_data.action == MLX_PRESS || key_data.action == MLX_REPEAT)
 		key_pressed_handle(key_data);
 	else if (key_data.action == MLX_RELEASE)
 		key_release_handle(key_data);

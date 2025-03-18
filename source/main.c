@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 14:07:08 by madias-m          #+#    #+#             */
-/*   Updated: 2025/03/18 11:31:33 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/03/18 14:39:00 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ int main(void)
 	mlx_loop_hook(game()->mlx, render_loop, NULL);
 	mlx_loop_hook(game()->mlx, new_movement, game());
 	mlx_key_hook(game()->mlx, key_hook, NULL);
+	mlx_close_hook(game()->mlx, close_window, NULL);
 	mlx_loop(game()->mlx);
 	mlx_terminate(game()->mlx);
 	return (0);
