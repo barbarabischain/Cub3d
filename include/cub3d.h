@@ -6,7 +6,7 @@
 /*   By: babischa <babischa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 14:14:49 by madias-m          #+#    #+#             */
-/*   Updated: 2025/03/17 19:36:27 by babischa         ###   ########.fr       */
+/*   Updated: 2025/03/18 16:47:59 by babischa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,21 +79,16 @@ typedef struct s_game
   	t_textures  	*textures;
 	int			    map[24][24];
 	void		    *win;
-	int			    max_x;
-	int			    max_y;
+	// int			    max_x;
+	// int			    max_y;
 	char		    key_w;
 	char		    key_a;
 	char		    key_s;
 	char		    key_d;
-	// int				floor[3];
-	// int				ceiling[3];
 	uint32_t		floor;
 	uint32_t		ceiling;
-
+	t_list			*map_list;
 }	t_game;
-
-// int F[3] = {28,28,28};
-// int C[3] = {105,105,105};
 
 t_game	*game(void);
 void    key_hook(mlx_key_data_t key_data, void *param);
@@ -107,6 +102,7 @@ void	manage_error(char *error);
 void	get_data_in_file(int fd);
 void	handle_texture(char *line, char **texture);
 void	handle_color(char *line, uint32_t *color);
+void	get_map(char	*line, int fd);
 
 /*** Parsing Utils ***/
 void	free_matrix(char **matrix);
