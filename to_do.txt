@@ -1,3 +1,2 @@
 Corrigir:
 
-- construir a versao final da veriavel de MAP
