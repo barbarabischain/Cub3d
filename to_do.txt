@@ -3,4 +3,3 @@ Corrigir:
 - Texturas que andam
 - eye fish
 - norminette
-- ESC 

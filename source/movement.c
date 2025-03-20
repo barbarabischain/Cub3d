@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 14:32:56 by madias-m          #+#    #+#             */
-/*   Updated: 2025/03/18 12:13:57 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/03/20 16:13:03 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char MAP_b[MAX_Y][MAX_X] = {
 	{'1','0','1','0','1','0','0','0','0','1','1','0','0','0','0','0','1','0','0','0','0','0','0','1'},
 	{'1','0','0','1','0','0','0','0','0','1','1','0','1','1','0','0','0','0','0','1','1','0','1','1'},
 	{'1','0','1','0','1','0','0','0','0','1','1','0','1','1','0','0','1','0','0','1','0','0','0','1'},
-	{'1','0','0','0','0','0','0','0','0','1','1','0','1','1','0','0','0','0','0','1','0','0','0','1'},
+	{'1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1'},
 };
 
 void	calc_next_pos(double *nextPosX, double *nextPosY)
@@ -90,9 +90,9 @@ void	new_movement(void *param)
 	next_pos_x = game()->coord->posX;
 	next_pos_y = game()->coord->posY;
 	calc_next_pos(&next_pos_x, &next_pos_y);
-	if (MAP_b[(int) game()->coord->posX][(int) next_pos_y] == '0' && next_pos_x < MAX_X)
+	if (MAP_b[(int) game()->coord->posX][(int) next_pos_y] != '1' && next_pos_y < MAX_Y)
 		game()->coord->posY = next_pos_y;
-	if (MAP_b[(int) next_pos_x][(int) game()->coord->posY] == '0' && next_pos_y < MAX_Y)
+	if (MAP_b[(int) next_pos_x][(int) game()->coord->posY] != '1' && next_pos_x < MAX_X)
 		game()->coord->posX = next_pos_x;
 	if (game()->key_right)
 		rotate_camera(-1);
