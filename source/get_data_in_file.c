@@ -6,11 +6,28 @@
 /*   By: babischa <babischa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 14:07:43 by babischa          #+#    #+#             */
-/*   Updated: 2025/03/18 17:17:05 by babischa         ###   ########.fr       */
+/*   Updated: 2025/03/25 19:04:51 by babischa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
+
+int	check_data(void)
+{
+	if (!game()->textures->north_path)
+		return (0);
+	if (!game()->textures->south_path)
+		return (0);
+	if (!game()->textures->east_path)
+		return (0);
+	if (!game()->textures->west_path)
+		return (0);
+	if (!game()->ceiling)
+		return (0);
+	if (!game()->floor)
+		return (0);
+	return (1);
+}
 
 void	get_textures_colors(char *tmp)
 {
@@ -49,6 +66,7 @@ void	get_data_in_file(int fd)
 		free(line);
 		line = get_next_line(fd);
 	}
-	//checar se todos os itens estão armazenados
-	//load_textures();
+	if (!check_data())
+		manage_error("Error: Missing data in file.\n");
+	load_textures();
 }

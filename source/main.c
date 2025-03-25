@@ -6,7 +6,7 @@
 /*   By: babischa <babischa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 14:07:08 by madias-m          #+#    #+#             */
-/*   Updated: 2025/03/18 17:17:11 by babischa         ###   ########.fr       */
+/*   Updated: 2025/03/22 17:47:03 by babischa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,10 @@ int main(int argc, char **argv)
 {
 	init_data();
 	validate(argc, argv);
-	// mlx_loop_hook(game()->mlx, render_loop, NULL);
-	// mlx_loop_hook(game()->mlx, movement, game());
-	// mlx_key_hook(game()->mlx, key_hook, NULL);
-	// mlx_loop(game()->mlx);
-	// mlx_terminate(game()->mlx);
+	mlx_loop_hook(game()->mlx, render_loop, NULL);
+	mlx_loop_hook(game()->mlx, movement, game());
+	mlx_key_hook(game()->mlx, key_hook, NULL);
+	mlx_loop(game()->mlx);
+	mlx_terminate(game()->mlx);
 	return (0);
 }

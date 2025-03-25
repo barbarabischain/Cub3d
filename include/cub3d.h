@@ -6,7 +6,7 @@
 /*   By: babischa <babischa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 14:14:49 by madias-m          #+#    #+#             */
-/*   Updated: 2025/03/18 16:47:59 by babischa         ###   ########.fr       */
+/*   Updated: 2025/03/25 19:07:25 by babischa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ typedef struct s_game
 	mlx_image_t		*image;
 	t_coordinates	*coord;
   	t_textures  	*textures;
-	int			    map[24][24];
+	char			**map;
 	void		    *win;
 	// int			    max_x;
 	// int			    max_y;
