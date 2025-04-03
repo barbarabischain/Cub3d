@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 14:14:49 by madias-m          #+#    #+#             */
-/*   Updated: 2025/04/03 11:20:49 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/04/03 11:41:30 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@
 
 #define WIDTH 800
 #define HEIGHT 800
-load_textures
-#define MAX_Y 24
-#define MAX_X 24
+
+#define MAX_Y 18
+#define MAX_X 9
 
 #define BLUE 0x99CCFF
 
