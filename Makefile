@@ -12,7 +12,11 @@ LIBS_MLX    := $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
 
 HEADERS 	:=	-I ./include -I $(LIBFT)
 
-SRC_PUSH	:=	main key_hook renderizer texture_loader movement
+SRC_PUSH	:=	main \
+				parsing get_data_in_file validate_file_utils \
+				handle_texture handle_color handle_map\
+				key_hook renderizer movement \
+				error close_window
 
 OBJ_PUSH	:=	$(addprefix objects/, $(addsuffix .o, $(SRC_PUSH)))
 

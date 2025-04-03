@@ -1,9 +1,5 @@
-Validacoes:
+Corrigir:
 
-1. Verificar caracteres contidos no mapa. {0, 1, (N, S, E ou W)};
-2. O Mapa precisa ser cercado por paredes (1);
-3. O elementos dentro do .cub devem ser separado por linhas vazias;
-4. O conteudo do mapa deve ser o ultimo elemento do arquivo .cub;
-5. Nos elementos, as informacoes devem estar separadas por espaco. Com excecao do elemento do mapa;
-6. Espacos sao validos fora das paredes do mapa. (mapas triangulares);
-7. Os identificadores dos elementos podem conter até 2 caracteres e devem ser a primeira informacao do elemento;
+- Texturas que andam
+- eye fish
+- norminette
