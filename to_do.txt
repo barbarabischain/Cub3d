@@ -3,3 +3,5 @@ Corrigir:
 - Texturas que andam
 - eye fish
 - norminette
+- Player pos
+- XY Pattern

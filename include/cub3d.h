@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 14:14:49 by madias-m          #+#    #+#             */
-/*   Updated: 2025/04/03 11:41:30 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/04/03 12:18:29 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@
 #define WIDTH 800
 #define HEIGHT 800
 
-#define MAX_Y 18
-#define MAX_X 9
+#define MAX_Y 9
+#define MAX_X 18
 
 #define BLUE 0x99CCFF
 
@@ -106,6 +106,7 @@ void	get_data_in_file(int fd);
 void	handle_texture(char *line, char **texture);
 void	handle_color(char *line, uint32_t *color);
 void	get_map(char	*line, int fd);
+void	set_player_initial_pos(void);
 
 /*** Parsing Utils ***/
 void	free_matrix(char **matrix);
