@@ -6,7 +6,7 @@
 /*   By: babischa <babischa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 14:14:49 by madias-m          #+#    #+#             */
-/*   Updated: 2025/03/25 19:07:25 by babischa         ###   ########.fr       */
+/*   Updated: 2025/03/25 20:28:38 by babischa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,5 +107,6 @@ void	get_map(char	*line, int fd);
 /*** Parsing Utils ***/
 void	free_matrix(char **matrix);
 int		ft_isspace(char c);
+void 	list_to_matrix(void);
 
 #endif
