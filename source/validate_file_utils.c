@@ -6,7 +6,7 @@
 /*   By: babischa <babischa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 15:31:12 by babischa          #+#    #+#             */
-/*   Updated: 2025/04/03 11:10:38 by babischa         ###   ########.fr       */
+/*   Updated: 2025/04/03 11:18:25 by babischa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,14 +56,14 @@ void print_list(t_list *list)
 	}
 }
 
-void print_matrix(void)
+void print_matrix(char **matrix)
 {
 	int i;
 
 	i = 0;
-	while (game()->map[i])
+	while (matrix[i])
 	{
-		printf("%s\n", game()->map[i]);
+		printf("%s\n", matrix[i]);
 		i++;
 	}
 }
