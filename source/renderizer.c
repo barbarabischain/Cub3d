@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 14:29:36 by madias-m          #+#    #+#             */
-/*   Updated: 2025/03/20 16:13:21 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/03/20 16:18:19 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ static void	erase_image(void)
 	int	y;
 	int	x;
 
-	y = 0;
 	mlx_resize_image(game()->image, game()->mlx->width, game()->mlx->height); // nao eh muito pratico, talves seja melhor utilizar um hook especifico
+	y = 0;
 	while (y < game()->mlx->height / 2)
 	{
 		x = 0;
