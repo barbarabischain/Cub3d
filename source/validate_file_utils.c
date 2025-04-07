@@ -6,12 +6,11 @@
 /*   By: babischa <babischa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 15:31:12 by babischa          #+#    #+#             */
-/*   Updated: 2025/03/17 19:23:34 by babischa         ###   ########.fr       */
+/*   Updated: 2025/04/07 15:58:41 by babischa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
-
 
 void	free_matrix(char **matrix)
 {
@@ -25,22 +24,28 @@ void	free_matrix(char **matrix)
 	free(matrix);
 }
 
-int	count_lines(int fd)
+int count_columns(char **matrix)
 {
-	int		count;
-	char	*temp;
+	int i;
 
-	count = 0;
-
-	temp = get_next_line(fd);
-	while (temp)
+	i = 0;
+	while (*matrix)
 	{
-		free(temp);
-		temp = get_next_line(fd);
-		count++;
+		if ((int)ft_strlen(*matrix) > i)
+			i = (int)ft_strlen(*matrix);
+		matrix++;
 	}
-	close (fd);
-	return (count);
+	return (i);
+}
+
+int	count_lines(char **matrix)
+{
+	int	i;
+
+	i = 0;
+	while (matrix[i])
+		i++;
+	return (i);
 }
 
 int	ft_isspace(char c)

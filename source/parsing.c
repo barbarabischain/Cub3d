@@ -6,7 +6,7 @@
 /*   By: babischa <babischa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 11:39:53 by babischa          #+#    #+#             */
-/*   Updated: 2025/03/25 19:01:23 by babischa         ###   ########.fr       */
+/*   Updated: 2025/04/07 16:02:18 by babischa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,10 @@ void handle_mapfile(char *file)
 	if (fd < 0)
 		manage_error("Error: open file.\n");
 	get_data_in_file(fd);
-	//game()->validate->count_lines = count_lines(fd);
-	//pegar tamanho do map
-	//tamanho maximo de colunas e de linhas
+	close(fd);
+	game()->max_x = count_lines(game()->map);
+	game()->max_y = count_columns(game()->map);
+	//validate_map();
 }
 
 void	validate_extension(char *file)
