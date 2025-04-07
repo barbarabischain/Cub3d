@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_file_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: babischa <babischa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 15:31:12 by babischa          #+#    #+#             */
-/*   Updated: 2025/04/07 15:58:41 by babischa         ###   ########.fr       */
+/*   Updated: 2025/04/07 18:35:05 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int count_columns(char **matrix)
 			i = (int)ft_strlen(*matrix);
 		matrix++;
 	}
-	return (i);
+	return (i - 1);
 }
 
 int	count_lines(char **matrix)
@@ -45,7 +45,7 @@ int	count_lines(char **matrix)
 	i = 0;
 	while (matrix[i])
 		i++;
-	return (i);
+	return (i - 1);
 }
 
 int	ft_isspace(char c)
