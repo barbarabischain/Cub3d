@@ -14,7 +14,7 @@ HEADERS 	:=	-I ./include -I $(LIBFT)
 
 SRC_PUSH	:=	main \
 				parsing get_data_in_file validate_file_utils \
-				handle_texture handle_color handle_map\
+				handle_texture handle_color get_map validate_map\
 				key_hook renderizer movement \
 				error close_window find_player
 

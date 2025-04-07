@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 14:14:49 by madias-m          #+#    #+#             */
-/*   Updated: 2025/04/07 15:23:57 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/04/07 17:51:01 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,8 @@ typedef struct s_game
   	t_textures  	*textures;
 	char			**map;
 	void		    *win;
-	// int			    max_x;
-	// int			    max_y;
+	int			    max_x;
+	int			    max_y;
 	char		    key_w;
 	char		    key_a;
 	char		    key_s;
@@ -107,9 +107,12 @@ void	handle_texture(char *line, char **texture);
 void	handle_color(char *line, uint32_t *color);
 void	get_map(char	*line, int fd);
 void	set_player_initial_pos(void);
+void 	validate_map(void);
 
 /*** Parsing Utils ***/
 void	free_matrix(char **matrix);
 int		ft_isspace(char c);
+int		count_lines(char **matrix);
+int 	count_columns(char **matrix);
 
 #endif
