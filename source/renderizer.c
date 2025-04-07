@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 14:29:36 by madias-m          #+#    #+#             */
-/*   Updated: 2025/04/03 11:51:10 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/04/07 16:01:44 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ static void	process_dda(t_coordinates *coord)
 			coord->mapY += coord->stepY;
 			coord->side = 1;
 		}
-		if (game()->map[coord->mapX][coord->mapY] != '0')
+		if (game()->map[coord->mapY][coord->mapX] == '1')
 			hit = 1;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 14:32:56 by madias-m          #+#    #+#             */
-/*   Updated: 2025/04/07 15:24:29 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/04/07 16:12:46 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	calc_next_pos(double *nextPosX, double *nextPosY)
 	}
 }
 
-void	rotate_camera(char dir)
+void	rotate(char dir)
 {
 	double			spd;
 	double			backup;
@@ -47,12 +47,12 @@ void	rotate_camera(char dir)
 
 	crd = game()->coord;
 	spd = game()->mlx->delta_time * 3.0;
-	backup = crd->dirX;
-	crd->dirX = crd->dirX * cos(spd * dir) - crd->dirY * sin(spd * dir);
-	crd->dirY = backup * sin(spd * dir) + crd->dirY * cos(spd * dir);
-	backup = crd->planeX;
-	crd->planeX = crd->planeX * cos(spd * dir) - crd->planeY * sin(spd * dir);
-	crd->planeY = backup * sin(spd * dir) + crd->planeY * cos(spd * dir);
+	backup = crd->dirY;
+	crd->dirY = crd->dirY * cos(spd * dir) - crd->dirX * sin (spd * dir);
+	crd->dirX = backup * sin(spd * dir) + crd->dirX * cos(spd * dir);
+	backup = crd->planeY;
+	crd->planeY = crd->planeY * cos(spd * dir) - crd->planeX * sin(spd * dir);
+	crd->planeX = backup * sin(spd * dir) + crd->planeX * cos(spd * dir);
 }
 
 void	new_movement(void *param)
@@ -64,12 +64,12 @@ void	new_movement(void *param)
 	next_pos_x = game()->coord->posX;
 	next_pos_y = game()->coord->posY;
 	calc_next_pos(&next_pos_x, &next_pos_y);
-	if (game()->map[(int) game()->coord->posX][(int) next_pos_y] != '1')
-		game()->coord->posY = next_pos_y;
-	if (game()->map[(int) next_pos_x][(int) game()->coord->posY] != '1')
+	if (game()->map[(int) game()->coord->posY][(int) next_pos_x] != '1')
 		game()->coord->posX = next_pos_x;
+	if (game()->map[(int) next_pos_y][(int) game()->coord->posX] != '1')
+		game()->coord->posY = next_pos_y;
 	if (game()->key_right)
-		rotate_camera(-1);
+		rotate(-1);
 	if (game()->key_left)
-		rotate_camera(1);
+		rotate(1);
 }
