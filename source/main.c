@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 14:07:08 by madias-m          #+#    #+#             */
-/*   Updated: 2025/04/03 12:15:44 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/04/07 15:23:45 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ t_game	*game(void)
 
 void	init_data(void)
 {
-	game()->mlx = mlx_init(WIDTH, HEIGHT, "CUB3D", true);
+	game()->mlx = mlx_init(INIT_W, INIT_H, "CUB3D", true);
 	if (!(game()->mlx))
 	{
  		puts(mlx_strerror(mlx_errno));
  		return ;
  	}
-	game()->image = mlx_new_image(game()->mlx, WIDTH, HEIGHT);
+	game()->image = mlx_new_image(game()->mlx, INIT_W, INIT_H);
 	if (!game()->image)
 	{
  		puts(mlx_strerror(mlx_errno));

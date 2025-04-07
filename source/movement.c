@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 14:32:56 by madias-m          #+#    #+#             */
-/*   Updated: 2025/04/03 11:44:50 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/04/07 15:24:29 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,9 @@ void	new_movement(void *param)
 	next_pos_x = game()->coord->posX;
 	next_pos_y = game()->coord->posY;
 	calc_next_pos(&next_pos_x, &next_pos_y);
-	if (game()->map[(int) game()->coord->posX][(int) next_pos_y] != '1' && next_pos_y < MAX_Y)
+	if (game()->map[(int) game()->coord->posX][(int) next_pos_y] != '1')
 		game()->coord->posY = next_pos_y;
-	if (game()->map[(int) next_pos_x][(int) game()->coord->posY] != '1' && next_pos_x < MAX_X)
+	if (game()->map[(int) next_pos_x][(int) game()->coord->posY] != '1')
 		game()->coord->posX = next_pos_x;
 	if (game()->key_right)
 		rotate_camera(-1);
