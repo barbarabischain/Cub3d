@@ -6,7 +6,7 @@
 /*   By: babischa <babischa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 14:18:33 by babischa          #+#    #+#             */
-/*   Updated: 2025/04/08 14:41:33 by babischa         ###   ########.fr       */
+/*   Updated: 2025/04/08 15:21:10 by babischa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int is_player(char c)
 }
 
 
-void	validate_characters(char **matrix)
+void	validate_players(char **matrix)
 {
 	int		player;
 	char	*line;
@@ -43,9 +43,28 @@ void	validate_characters(char **matrix)
 		manage_error("Error: player not found!\n");
 }
 
+void	validate_characters(char **matrix)
+{
+	char	*line;
+
+	while (*matrix)
+	{
+		line = *matrix;
+		while(*line)
+		{
+			if (!(is_player(*line)|| *line == '1' || *line == '0' || *line == ' ' || *line == '\n'))
+				manage_error("Error: Invalid character");
+			line++;
+		}
+		matrix++;
+	}
+}
+
 void validate_map(void)
 {
+	validate_players(game()->map);
 	validate_characters(game()->map);
+	//validate_walls(game()->map);
 }
 
 void	replace_spaces_and_tabs(char **matrix)
