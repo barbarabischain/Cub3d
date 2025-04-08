@@ -6,7 +6,7 @@
 /*   By: babischa <babischa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 11:39:53 by babischa          #+#    #+#             */
-/*   Updated: 2025/04/07 16:02:18 by babischa         ###   ########.fr       */
+/*   Updated: 2025/04/08 14:32:07 by babischa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,9 @@ void handle_mapfile(char *file)
 	close(fd);
 	game()->max_x = count_lines(game()->map);
 	game()->max_y = count_columns(game()->map);
-	//validate_map();
+	replace_spaces_and_tabs(game()->map);
+	validate_map();
+	//print_matrix(game()->map);
 }
 
 void	validate_extension(char *file)

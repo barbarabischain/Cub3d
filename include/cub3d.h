@@ -6,7 +6,7 @@
 /*   By: babischa <babischa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 14:14:49 by madias-m          #+#    #+#             */
-/*   Updated: 2025/04/07 15:59:15 by babischa         ###   ########.fr       */
+/*   Updated: 2025/04/07 16:26:46 by babischa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ void	handle_texture(char *line, char **texture);
 void	handle_color(char *line, uint32_t *color);
 void	get_map(char	*line, int fd);
 void 	validate_map(void);
+void	replace_spaces_and_tabs(char **matrix);
 
 
 /*** Parsing Utils ***/
@@ -114,5 +115,6 @@ void	free_matrix(char **matrix);
 int		ft_isspace(char c);
 int		count_lines(char **matrix);
 int 	count_columns(char **matrix);
+void 	print_matrix(char **matrix);
 
 #endif
