@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 11:39:53 by babischa          #+#    #+#             */
-/*   Updated: 2025/04/07 18:34:52 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/04/09 12:06:58 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,6 @@ void handle_mapfile(char *file)
 	close(fd);
 	game()->max_y = count_lines(game()->map);
 	game()->max_x = count_columns(game()->map);
-	printf("maxY: %d\n", game()->max_y);
-	printf("maxX: %d\n", game()->max_x);
-	//validate_map();
 }
 
 void	validate_extension(char *file)
