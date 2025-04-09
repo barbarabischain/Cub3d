@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 14:29:36 by madias-m          #+#    #+#             */
-/*   Updated: 2025/04/07 16:46:24 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/04/09 12:33:38 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,7 @@ static void	calc_position_direction(int x, t_coordinates *coord)
 
 static void	process_dda(t_coordinates *coord)
 {
-	char	hit;
-
-	hit = 0;
-	while (hit == 0)
+	while (game()->map[coord->mapY][coord->mapX] != '1')
 	{
 		if (coord->sideDistX < coord->sideDistY)
 		{
@@ -84,8 +81,6 @@ static void	process_dda(t_coordinates *coord)
 			coord->mapY += coord->stepY;
 			coord->side = 1;
 		}
-		if (game()->map[coord->mapY][coord->mapX] == '1')
-			hit = 1;
 	}
 }
 
