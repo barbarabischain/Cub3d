@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 14:29:36 by madias-m          #+#    #+#             */
-/*   Updated: 2025/04/09 12:33:38 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/04/09 14:05:24 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ static void	erase_image(void)
 
 static void	calc_position_direction(int x, t_coordinates *coord)
 {
-	coord->rayDirX = coord->dirX + coord->planeX * (2 * x / (double) game()->mlx->width - 1);
-	coord->rayDirY = coord->dirY + coord->planeY * (2 * x / (double) game()->mlx->width - 1);
+	coord->rayDirX = coord->dirX + coord->planeX * (2 * x / (float) game()->mlx->width - 1);
+	coord->rayDirY = coord->dirY + coord->planeY * (2 * x / (float) game()->mlx->width - 1);
 	coord->deltaDistX = sqrt(1 + (coord->rayDirY * coord->rayDirY) / (coord->rayDirX * coord->rayDirX));
 	coord->deltaDistY = sqrt(1 + (coord->rayDirX * coord->rayDirX) / (coord->rayDirY * coord->rayDirY));
 	coord->mapX = (int) coord->posX;

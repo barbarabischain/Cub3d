@@ -6,19 +6,19 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 12:07:57 by madias-m          #+#    #+#             */
-/*   Updated: 2025/04/07 18:28:07 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/04/09 14:05:28 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-static void	set_dir(double x, double y)
+static void	set_dir(float x, float y)
 {
 	game()->coord->dirX = x;
 	game()->coord->dirY = y;
 }
 
-static void	set_plane(double x, double y)
+static void	set_plane(float x, float y)
 {
 	game()->coord->planeX = x;
 	game()->coord->planeY = y;

@@ -6,15 +6,15 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 14:32:56 by madias-m          #+#    #+#             */
-/*   Updated: 2025/04/07 16:12:46 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/04/09 14:05:32 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-void	calc_next_pos(double *nextPosX, double *nextPosY)
+void	calc_next_pos(float *nextPosX, float *nextPosY)
 {
-	double	spd;
+	float	spd;
 
 	spd = game()->mlx->delta_time * 7.0;
 	if (game()->key_w)
@@ -41,8 +41,8 @@ void	calc_next_pos(double *nextPosX, double *nextPosY)
 
 void	rotate(char dir)
 {
-	double			spd;
-	double			backup;
+	float			spd;
+	float			backup;
 	t_coordinates	*crd;
 
 	crd = game()->coord;
@@ -57,8 +57,8 @@ void	rotate(char dir)
 
 void	new_movement(void *param)
 {
-	double	next_pos_x;
-	double	next_pos_y;
+	float	next_pos_x;
+	float	next_pos_y;
 
 	(void) param;
 	next_pos_x = game()->coord->posX;

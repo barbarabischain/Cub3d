@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 14:14:49 by madias-m          #+#    #+#             */
-/*   Updated: 2025/04/09 12:07:25 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/04/09 14:05:11 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,28 +36,28 @@ typedef struct s_textures {
 
 typedef struct s_wall {
 	mlx_texture_t	*texture;
-	double			x;
+	float			x;
 	int				texX;
-	double			texStep;
-	double			texPos;
+	float			texStep;
+	float			texPos;
 }	t_wall;
 
 typedef struct s_coordinates {
-	double		posX;
-	double		posY;
-	double		dirX;
-	double		dirY;
-	double		planeX;
-	double		planeY;
-	double		rayDirX;
-	double		rayDirY;
+	float		posX;
+	float		posY;
+	float		dirX;
+	float		dirY;
+	float		planeX;
+	float		planeY;
+	float		rayDirX;
+	float		rayDirY;
 	int			mapX;
 	int			mapY;
-	double		sideDistX;
-	double		sideDistY;
-	double		deltaDistX;
-	double		deltaDistY;
-	double		perpWallDist;
+	float		sideDistX;
+	float		sideDistY;
+	float		deltaDistX;
+	float		deltaDistY;
+	float		perpWallDist;
 	int			stepX;
 	int			stepY;
 	char		side;
