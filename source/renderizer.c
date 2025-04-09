@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 14:29:36 by madias-m          #+#    #+#             */
-/*   Updated: 2025/04/09 14:05:24 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/04/09 15:57:21 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,18 @@ static void	calc_position_direction(int x, t_coordinates *coord)
 {
 	coord->rayDirX = coord->dirX + coord->planeX * (2 * x / (float) game()->mlx->width - 1);
 	coord->rayDirY = coord->dirY + coord->planeY * (2 * x / (float) game()->mlx->width - 1);
-	coord->deltaDistX = sqrt(1 + (coord->rayDirY * coord->rayDirY) / (coord->rayDirX * coord->rayDirX));
-	coord->deltaDistY = sqrt(1 + (coord->rayDirX * coord->rayDirX) / (coord->rayDirY * coord->rayDirY));
+	// coord->deltaDistX = sqrt(1 + (coord->rayDirY * coord->rayDirY) / (coord->rayDirX * coord->rayDirX));
+	// coord->deltaDistY = sqrt(1 + (coord->rayDirX * coord->rayDirX) / (coord->rayDirY * coord->rayDirY));
+
+	if (coord->rayDirX == 0)
+		coord->deltaDistX = HUGE_VALF;
+	else
+		coord->deltaDistX = fabs(1 / coord->rayDirX);
+	if (coord->rayDirY == 0)
+		coord->deltaDistY = HUGE_VALF;
+	else
+		coord->deltaDistY = fabs(1 / coord->rayDirY);
+
 	coord->mapX = (int) coord->posX;
 	coord->mapY = (int) coord->posY;
 	if (coord->rayDirX < 0)
@@ -145,9 +155,9 @@ static void	draw_wall(int x, t_coordinates *coord)
 		wall.x = coord->posY + coord->perpWallDist * coord->rayDirY;
 	wall.x -= floor(wall.x);
 	wall.texX = (int)(wall.x * wall.texture->width);
-	if (coord->side == 1 && coord->rayDirY > 0)
+	if (coord->side == 0 && coord->rayDirX < 0)
 		wall.texX = wall.texture->width - wall.texX - 1;
-	else if (coord->side == 0 && coord->rayDirX < 0)
+	if (coord->side == 1 && coord->rayDirY > 0)
 		wall.texX = wall.texture->width - wall.texX - 1;
 	wall.texStep = 1.0 * wall.texture->height / coord->lineHeight;
 	wall.texPos = (coord->drawStart - game()->mlx->height / 2 + coord->lineHeight / 2) * wall.texStep;
