@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 14:14:49 by madias-m          #+#    #+#             */
-/*   Updated: 2025/04/07 17:51:01 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/04/09 12:07:25 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,6 @@
 
 #define INIT_W 800
 #define INIT_H 800
-
-#define MAX_Y 9
-#define MAX_X 20
-
-#define BLUE 0x99CCFF
 
 typedef struct s_textures {
 	char			*north_path;
