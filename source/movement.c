@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 14:32:56 by madias-m          #+#    #+#             */
-/*   Updated: 2025/04/09 14:05:32 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/04/10 12:58:45 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,23 +19,23 @@ void	calc_next_pos(float *nextPosX, float *nextPosY)
 	spd = game()->mlx->delta_time * 7.0;
 	if (game()->key_w)
 	{
-		*nextPosX = (game()->coord->posX + game()->coord->dirX * spd);
-		*nextPosY = (game()->coord->posY + game()->coord->dirY * spd);
+		*nextPosX = (game()->coord->pos_x + game()->coord->dir_x * spd);
+		*nextPosY = (game()->coord->pos_y + game()->coord->dir_y * spd);
 	}
 	if (game()->key_s)
 	{	
-		*nextPosX = (game()->coord->posX - game()->coord->dirX * spd);
-		*nextPosY = (game()->coord->posY - game()->coord->dirY * spd);
+		*nextPosX = (game()->coord->pos_x - game()->coord->dir_x * spd);
+		*nextPosY = (game()->coord->pos_y - game()->coord->dir_y * spd);
 	}
 	if (game()->key_a)
 	{
-		*nextPosX = (game()->coord->posX - game()->coord->planeX * spd);
-		*nextPosY = (game()->coord->posY - game()->coord->planeY * spd);
+		*nextPosX = (game()->coord->pos_x - game()->coord->plane_x * spd);
+		*nextPosY = (game()->coord->pos_y - game()->coord->plane_y * spd);
 	}
 	if (game()->key_d)
 	{
-		*nextPosX = game()->coord->posX + game()->coord->planeX * spd;
-		*nextPosY = game()->coord->posY + game()->coord->planeY * spd;
+		*nextPosX = game()->coord->pos_x + game()->coord->plane_x * spd;
+		*nextPosY = game()->coord->pos_y + game()->coord->plane_y * spd;
 	}
 }
 
@@ -47,12 +47,12 @@ void	rotate(char dir)
 
 	crd = game()->coord;
 	spd = game()->mlx->delta_time * 3.0;
-	backup = crd->dirY;
-	crd->dirY = crd->dirY * cos(spd * dir) - crd->dirX * sin (spd * dir);
-	crd->dirX = backup * sin(spd * dir) + crd->dirX * cos(spd * dir);
-	backup = crd->planeY;
-	crd->planeY = crd->planeY * cos(spd * dir) - crd->planeX * sin(spd * dir);
-	crd->planeX = backup * sin(spd * dir) + crd->planeX * cos(spd * dir);
+	backup = crd->dir_y;
+	crd->dir_y = crd->dir_y * cos(spd * dir) - crd->dir_x * sin (spd * dir);
+	crd->dir_x = backup * sin(spd * dir) + crd->dir_x * cos(spd * dir);
+	backup = crd->plane_y;
+	crd->plane_y = crd->plane_y * cos(spd * dir) - crd->plane_x * sin(spd * dir);
+	crd->plane_x = backup * sin(spd * dir) + crd->plane_x * cos(spd * dir);
 }
 
 void	new_movement(void *param)
@@ -61,13 +61,13 @@ void	new_movement(void *param)
 	float	next_pos_y;
 
 	(void) param;
-	next_pos_x = game()->coord->posX;
-	next_pos_y = game()->coord->posY;
+	next_pos_x = game()->coord->pos_x;
+	next_pos_y = game()->coord->pos_y;
 	calc_next_pos(&next_pos_x, &next_pos_y);
-	if (game()->map[(int) game()->coord->posY][(int) next_pos_x] != '1')
-		game()->coord->posX = next_pos_x;
-	if (game()->map[(int) next_pos_y][(int) game()->coord->posX] != '1')
-		game()->coord->posY = next_pos_y;
+	if (game()->map[(int) game()->coord->pos_y][(int) next_pos_x] != '1')
+		game()->coord->pos_x = next_pos_x;
+	if (game()->map[(int) next_pos_y][(int) game()->coord->pos_x] != '1')
+		game()->coord->pos_y = next_pos_y;
 	if (game()->key_right)
 		rotate(-1);
 	if (game()->key_left)

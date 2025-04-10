@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 14:29:36 by madias-m          #+#    #+#             */
-/*   Updated: 2025/04/10 11:48:38 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/04/10 13:00:42 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,18 +44,18 @@ static void	calc_environment(int x, t_coordinates *coord)
 
 static void	process_dda(t_coordinates *coord)
 {
-	while (game()->map[coord->mapY][coord->mapX] != '1')
+	while (game()->map[coord->map_y][coord->map_x] != '1')
 	{
-		if (coord->sideDistX < coord->sideDistY)
+		if (coord->side_dist_x < coord->side_dist_y)
 		{
-			coord->sideDistX += coord->deltaDistX;
-			coord->mapX += coord->stepX;
+			coord->side_dist_x += coord->delta_dist_x;
+			coord->map_x += coord->step_x;
 			coord->side = 0;
 		}
 		else
 		{
-			coord->sideDistY += coord->deltaDistY;
-			coord->mapY += coord->stepY;
+			coord->side_dist_y += coord->delta_dist_y;
+			coord->map_y += coord->step_y;
 			coord->side = 1;
 		}
 	}
@@ -64,16 +64,16 @@ static void	process_dda(t_coordinates *coord)
 static void	calc_perpendicular_ray(t_coordinates *coord)
 {	
 	if (coord->side == 0)
-		coord->perpWallDist = (coord->sideDistX - coord->deltaDistX);
+		coord->perp_wall_dist = (coord->side_dist_x - coord->delta_dist_x);
 	else
-		coord->perpWallDist = (coord->sideDistY - coord->deltaDistY);
-	coord->lineHeight = (int)(game()->mlx->height / coord->perpWallDist);
-	coord->drawStart = -coord->lineHeight / 2 + game()->mlx->height / 2;
-	coord->drawEnd = coord->lineHeight / 2 + game()->mlx->height / 2;
-	if (coord->drawStart < 0)
-		coord->drawStart = 0;
-	if (coord->drawEnd > game()->mlx->height)
-		coord->drawEnd = game()->mlx->height - 1;
+		coord->perp_wall_dist = (coord->side_dist_y - coord->delta_dist_y);
+	coord->line_height = (int)(game()->mlx->height / coord->perp_wall_dist);
+	coord->draw_start = -coord->line_height / 2 + game()->mlx->height / 2;
+	coord->draw_end = coord->line_height / 2 + game()->mlx->height / 2;
+	if (coord->draw_start < 0)
+		coord->draw_start = 0;
+	if (coord->draw_end > game()->mlx->height)
+		coord->draw_end = game()->mlx->height - 1;
 }
 
 void	render_loop(void *param)

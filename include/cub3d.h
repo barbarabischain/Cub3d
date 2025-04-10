@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 14:14:49 by madias-m          #+#    #+#             */
-/*   Updated: 2025/04/10 12:00:20 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/04/10 13:03:25 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # include "../MLX42/include/MLX42/MLX42.h"
 # include <math.h>
 
-#define INIT_W 800
-#define INIT_H 800
+# define INIT_W 800
+# define INIT_H 800
 
 typedef struct s_textures {
 	char			*north_path;
@@ -32,7 +32,7 @@ typedef struct s_textures {
 	mlx_texture_t	*south_tex;
 	mlx_texture_t	*east_tex;
 	mlx_texture_t	*west_tex;
-} t_textures;
+}	t_textures;
 
 typedef struct s_wall {
 	mlx_texture_t	*texture;
@@ -43,43 +43,43 @@ typedef struct s_wall {
 }	t_wall;
 
 typedef struct s_coordinates {
-	float		posX;
-	float		posY;
-	float		dirX;
-	float		dirY;
-	float		planeX;
-	float		planeY;
-	float		rayDirX;
-	float		rayDirY;
-	int			mapX;
-	int			mapY;
-	float		sideDistX;
-	float		sideDistY;
-	float		deltaDistX;
-	float		deltaDistY;
-	float		perpWallDist;
-	int			stepX;
-	int			stepY;
+	float		pos_x;
+	float		pos_y;
+	float		dir_x;
+	float		dir_y;
+	float		plane_x;
+	float		plane_y;
+	float		ray_dir_x;
+	float		ray_dir_y;
+	int			map_x;
+	int			map_y;
+	float		side_dist_x;
+	float		side_dist_y;
+	float		delta_dist_x;
+	float		delta_dist_y;
+	float		perp_wall_dist;
+	int			step_x;
+	int			step_y;
 	char		side;
-	int			lineHeight;
-	int			drawStart;
-	int			drawEnd;
+	int			line_height;
+	int			draw_start;
+	int			draw_end;
 }	t_coordinates;
 
 typedef struct s_game
 {
-	mlx_t		    *mlx;
+	mlx_t			*mlx;
 	mlx_image_t		*image;
 	t_coordinates	*coord;
-  	t_textures  	*textures;
+	t_textures		*textures;
 	char			**map;
-	void		    *win;
-	int			    max_x;
-	int			    max_y;
-	char		    key_w;
-	char		    key_a;
-	char		    key_s;
-	char		    key_d;
+	void			*win;
+	int				max_x;
+	int				max_y;
+	char			key_w;
+	char			key_a;
+	char			key_s;
+	char			key_d;
 	char			key_right;
 	char			key_left;
 	uint32_t		floor;
@@ -88,10 +88,10 @@ typedef struct s_game
 }	t_game;
 
 t_game	*game(void);
-void    key_hook(mlx_key_data_t key_data, void *param);
-void    render_loop(void *param);
+void	key_hook(mlx_key_data_t key_data, void *param);
+void	render_loop(void *param);
 void	new_movement(void *param);
-void    load_textures(void);
+void	load_textures(void);
 void	close_window(void *param);
 
 /***	Parsing ***/
@@ -102,20 +102,20 @@ void	handle_texture(char *line, char **texture);
 void	handle_color(char *line, uint32_t *color);
 void	get_map(char	*line, int fd);
 void	set_player_initial_pos(void);
-void 	validate_map(void);
+void	validate_map(void);
 
 /***	Parsing Utils ***/
 void	free_matrix(char **matrix);
 int		ft_isspace(char c);
 int		count_lines(char **matrix);
-int 	count_columns(char **matrix);
+int		count_columns(char **matrix);
 
 /***	Renderizer Utils***/
-void			calc_ray_directions(int width_pixel, t_coordinates *coord);
-void			calc_delta_distance(t_coordinates *coord);
-void			calc_player_position(t_coordinates *coord);
+void	calc_ray_directions(int width_pixel, t_coordinates *coord);
+void	calc_delta_distance(t_coordinates *coord);
+void	calc_player_position(t_coordinates *coord);
 
 /***	Draw Wall***/
-void			draw_wall(int x, t_coordinates *coord);
+void	draw_wall(int x, t_coordinates *coord);
 
 #endif
