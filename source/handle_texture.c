@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_texture.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: babischa <babischa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 15:45:22 by madias-m          #+#    #+#             */
-/*   Updated: 2025/03/18 11:48:53 by babischa         ###   ########.fr       */
+/*   Updated: 2025/04/10 10:37:46 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ mlx_texture_t	*load(char *texture_path)
 
 	texture = mlx_load_png(texture_path);
 	if (!texture)
-		ft_printf("deu ruim na textura\n"); // atualizar mensagem de erro
+		ft_printf("Failed to load texture: %s\n", texture_path);
 	return (texture);
 }
 

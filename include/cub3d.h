@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 14:14:49 by madias-m          #+#    #+#             */
-/*   Updated: 2025/04/09 14:05:11 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/04/10 12:00:20 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ typedef struct s_textures {
 typedef struct s_wall {
 	mlx_texture_t	*texture;
 	float			x;
-	int				texX;
-	float			texStep;
-	float			texPos;
+	int				tex_x;
+	float			tex_step;
+	float			tex_pos;
 }	t_wall;
 
 typedef struct s_coordinates {
@@ -94,7 +94,7 @@ void	new_movement(void *param);
 void    load_textures(void);
 void	close_window(void *param);
 
-/*** Parsing ***/
+/***	Parsing ***/
 void	validate(int argc, char **argv);
 void	manage_error(char *error);
 void	get_data_in_file(int fd);
@@ -104,10 +104,18 @@ void	get_map(char	*line, int fd);
 void	set_player_initial_pos(void);
 void 	validate_map(void);
 
-/*** Parsing Utils ***/
+/***	Parsing Utils ***/
 void	free_matrix(char **matrix);
 int		ft_isspace(char c);
 int		count_lines(char **matrix);
 int 	count_columns(char **matrix);
+
+/***	Renderizer Utils***/
+void			calc_ray_directions(int width_pixel, t_coordinates *coord);
+void			calc_delta_distance(t_coordinates *coord);
+void			calc_player_position(t_coordinates *coord);
+
+/***	Draw Wall***/
+void			draw_wall(int x, t_coordinates *coord);
 
 #endif
