@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 14:32:56 by madias-m          #+#    #+#             */
-/*   Updated: 2025/04/10 12:58:45 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/04/10 13:05:24 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,12 @@ void	rotate(char dir)
 	crd = game()->coord;
 	spd = game()->mlx->delta_time * 3.0;
 	backup = crd->dir_y;
-	crd->dir_y = crd->dir_y * cos(spd * dir) - crd->dir_x * sin (spd * dir);
+	crd->dir_y = crd->dir_y * cos(spd * dir);
+	crd->dir_y -= crd->dir_x * sin (spd * dir);
 	crd->dir_x = backup * sin(spd * dir) + crd->dir_x * cos(spd * dir);
 	backup = crd->plane_y;
-	crd->plane_y = crd->plane_y * cos(spd * dir) - crd->plane_x * sin(spd * dir);
+	crd->plane_y = crd->plane_y * cos(spd * dir);
+	crd->plane_y -= crd->plane_x * sin(spd * dir);
 	crd->plane_x = backup * sin(spd * dir) + crd->plane_x * cos(spd * dir);
 }
 

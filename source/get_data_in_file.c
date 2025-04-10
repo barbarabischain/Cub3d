@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_data_in_file.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: babischa <babischa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 14:07:43 by babischa          #+#    #+#             */
-/*   Updated: 2025/03/25 19:04:51 by babischa         ###   ########.fr       */
+/*   Updated: 2025/04/10 13:08:02 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,10 @@ void	get_data_in_file(int fd)
 		if (!ft_strncmp(tmp, "1", 1) || !ft_strncmp(tmp, "0", 1))
 		{
 			get_map(line, fd);
-			break;
+			break ;
 		}
 		else if (*tmp != '\0' && *tmp != '\n')
-				get_textures_colors(tmp);
+			get_textures_colors(tmp);
 		free(line);
 		line = get_next_line(fd);
 	}

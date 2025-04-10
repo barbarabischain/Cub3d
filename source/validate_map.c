@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   validate_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: babischa <babischa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 14:18:33 by babischa          #+#    #+#             */
-/*   Updated: 2025/04/07 16:01:43 by babischa         ###   ########.fr       */
+/*   Updated: 2025/04/10 13:11:21 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-void validate_map(void)
+void	validate_map(void)
 {
 
 }

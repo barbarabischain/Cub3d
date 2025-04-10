@@ -3,27 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   get_map.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: babischa <babischa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 12:02:30 by babischa          #+#    #+#             */
-/*   Updated: 2025/04/07 14:24:50 by babischa         ###   ########.fr       */
+/*   Updated: 2025/04/10 13:10:33 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-void print_list(t_list *list)
+void	print_list(t_list *list)
 {
 	while (list)
 	{
-		printf("%s\n", (char*)list->content);
+		printf("%s\n", (char *)list->content);
 		list = list->next;
 	}
 }
 
-void print_matrix()
+void	print_matrix(void)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (game()->map[i])
@@ -33,7 +33,7 @@ void print_matrix()
 	}
 }
 
-void list_to_matrix()
+void	list_to_matrix(void)
 {
 	t_list	*tmp;
 	char	**matrix;
@@ -44,23 +44,22 @@ void list_to_matrix()
 	i = 0;
 	while (tmp)
 	{
-		matrix[i] = ft_strdup((char*)tmp->content);
+		matrix[i] = ft_strdup((char *)tmp->content);
 		tmp = tmp->next;
 		i++;
 	}
 	game()->map = matrix;
 }
 
-void store_map_in_list(char *line)
+void	store_map_in_list(char *line)
 {
 	char	*copy_line;
 
 	copy_line = ft_strdup(line);
 	if (!game()->map_list)
-		game()->map_list = ft_lstnew((void*)copy_line);
+		game()->map_list = ft_lstnew((void *)copy_line);
 	else
-		ft_lstadd_back(&game()->map_list, ft_lstnew((void*)copy_line));
-
+		ft_lstadd_back(&game()->map_list, ft_lstnew((void *)copy_line));
 }
 
 void	get_map(char	*line, int fd)

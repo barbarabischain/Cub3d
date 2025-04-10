@@ -6,15 +6,15 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 11:39:53 by babischa          #+#    #+#             */
-/*   Updated: 2025/04/09 12:06:58 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/04/10 13:15:09 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-void handle_mapfile(char *file)
+void	handle_mapfile(char *file)
 {
-	int fd;
+	int	fd;
 
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
@@ -30,7 +30,7 @@ void	validate_extension(char *file)
 	while (*file)
 	{
 		if (!ft_strncmp(".cub", file, 5))
-			return;
+			return ;
 		file++;
 	}
 	manage_error("error: invalid map extension\n");

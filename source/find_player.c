@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 12:07:57 by madias-m          #+#    #+#             */
-/*   Updated: 2025/04/09 14:05:28 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/04/10 13:06:51 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 static void	set_dir(float x, float y)
 {
-	game()->coord->dirX = x;
-	game()->coord->dirY = y;
+	game()->coord->dir_x = x;
+	game()->coord->dir_y = y;
 }
 
 static void	set_plane(float x, float y)
 {
-	game()->coord->planeX = x;
-	game()->coord->planeY = y;
+	game()->coord->plane_x = x;
+	game()->coord->plane_y = y;
 }
 
 static void	set_camera_inital_pos(char c)
@@ -61,8 +61,8 @@ void	set_player_initial_pos(void)
 		{
 			if (ft_strchr("NSWE", game()->map[y][x]))
 			{
-				game()->coord->posX = x;
-				game()->coord->posY = y;
+				game()->coord->pos_x = x;
+				game()->coord->pos_y = y;
 				set_camera_inital_pos(game()->map[y][x]);
 				return ;
 			}

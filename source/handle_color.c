@@ -3,19 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   handle_color.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: babischa <babischa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 14:01:20 by babischa          #+#    #+#             */
-/*   Updated: 2025/03/18 11:57:14 by babischa         ###   ########.fr       */
+/*   Updated: 2025/04/10 13:14:45 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-uint32_t convert_color(int r, int g, int b)
+uint32_t	convert_color(int r, int g, int b)
 {
-	uint32_t color =  (r << 24 | g << 16 | b << 8 | 255);
-	return (color);
+	return (r << 24 | g << 16 | b << 8 | 255);
 }
 
 void	color_error(char **matrix, char *line)
@@ -27,7 +26,7 @@ void	color_error(char **matrix, char *line)
 	manage_error("Error: Invalid color!\n");
 }
 
-int		is_valid_color(char	*rgb_element)
+int	is_valid_color(char	*rgb_element)
 {
 	while (*rgb_element)
 	{
@@ -44,12 +43,11 @@ char	**process_line(char	*line)
 	char	**rgb;
 
 	rgb = NULL;
-	trim_line = ft_strtrim(line ,"FC \t\v\f\r\n\b");
+	trim_line = ft_strtrim(line, "FC \t\v\f\r\n\b");
 	rgb = ft_split(trim_line, ',');
 	free(trim_line);
 	if ((!rgb || !rgb[0] || !rgb[1] || !rgb[2]))
 		color_error(rgb, line);
-
 	return (rgb);
 }
 
@@ -66,7 +64,7 @@ void	handle_color(char *line, uint32_t *color)
 	i = 0;
 	while (rgb[i])
 	{
-		tmp	= ft_strtrim(rgb[i], " \t\v\f\n\b");
+		tmp = ft_strtrim(rgb[i], " \t\v\f\n\b");
 		if (!is_valid_color(tmp))
 		{
 			free(tmp);

@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 15:31:12 by babischa          #+#    #+#             */
-/*   Updated: 2025/04/07 18:35:05 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/04/10 13:08:18 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ void	free_matrix(char **matrix)
 	free(matrix);
 }
 
-int count_columns(char **matrix)
+int	count_columns(char **matrix)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (*matrix)
