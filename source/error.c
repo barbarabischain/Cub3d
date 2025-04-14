@@ -3,24 +3,55 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: babischa <babischa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 15:45:22 by madias-m          #+#    #+#             */
-/*   Updated: 2025/04/10 13:08:47 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/04/14 17:45:06 by babischa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-void	cleanup_game(void)
+// void	cleanup_game(void)
+// {
+// 	if (!game())
+// 		return ;
+// }
+
+void	cleanup_textures()
 {
-	if (!game())
-		return ;
+	if (game()->textures->north_tex)
+		mlx_delete_texture(game()->textures->north_tex);
+	if (game()->textures->south_tex)
+		mlx_delete_texture(game()->textures->south_tex);
+	if (game()->textures->east_tex)
+		mlx_delete_texture(game()->textures->east_tex);
+	if (game()->textures->west_tex)
+		mlx_delete_texture(game()->textures->west_tex);
+	if (game()->textures->north_path)
+		free(game()->textures->north_path);
+	if (game()->textures->south_path)
+		free(game()->textures->south_path);
+	if (game()->textures->east_path)
+		free(game()->textures->east_path);
+	if (game()->textures->west_path)
+		free(game()->textures->west_path);
+	if (game()->textures)
+		free(game()->textures);
 }
 
 void	cleanup_memory(void)
 {
-	cleanup_game();
+	if (game()->map)
+		free_matrix(game()->map);
+	if (game()->map_list)
+		ft_lstclear(&game()->map_list, free);
+	if (game()->coord)
+		free(game()->coord);
+	if (game()->textures)
+		cleanup_textures();
+	if (game())
+		free(game());
 }
 
 void	manage_error(char *error)

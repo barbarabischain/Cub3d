@@ -6,7 +6,7 @@
 /*   By: babischa <babischa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 10:05:07 by babischa          #+#    #+#             */
-/*   Updated: 2025/04/14 14:16:54 by babischa         ###   ########.fr       */
+/*   Updated: 2025/04/14 14:44:20 by babischa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	check_borders(char **matrix, int i, int j)
 		manage_error("Error: Invalid map\n");
 	if (!(matrix[i][j + 1] && is_neighbor_valid(matrix, i, j + 1)))
 		manage_error("Error: Invalid map\n");
-
 	if (!(matrix[i - 1][j - 1] && is_neighbor_valid(matrix, i - 1, j - 1)))
 		manage_error("Error: Invalid map\n");
 	if (!(matrix[i - 1][j + 1] && is_neighbor_valid(matrix, i - 1, j + 1)))

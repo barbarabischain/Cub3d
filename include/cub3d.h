@@ -6,7 +6,7 @@
 /*   By: babischa <babischa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 14:14:49 by madias-m          #+#    #+#             */
-/*   Updated: 2025/04/14 13:28:14 by babischa         ###   ########.fr       */
+/*   Updated: 2025/04/14 16:37:55 by babischa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,7 @@ void	free_matrix(char **matrix);
 int		ft_isspace(char c);
 int		count_lines(char **matrix);
 int		count_columns(char **matrix);
+void	cleanup_memory(void);
 
 /***	Renderizer Utils***/
 void	calc_ray_directions(int width_pixel, t_coordinates *coord);

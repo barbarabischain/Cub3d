@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_texture.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: babischa <babischa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 15:45:22 by madias-m          #+#    #+#             */
-/*   Updated: 2025/04/10 10:37:46 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/04/14 14:48:35 by babischa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,14 +60,14 @@ void	handle_texture(char *line, char **texture)
 	{
 		free(line);
 		free_matrix(split_path);
-		manage_error("Error: invalid path1!\n");
+		manage_error("Error: invalid texture path1!\n");
 	}
 	trim_path = ft_strtrim(split_path[1], "\n\t\b\v\r");
 	free_matrix(split_path);
 	if (!is_valid_path(trim_path))
 	{
 		free(line);
-		manage_error("Error: invalid path2!\n");
+		manage_error("Error: invalid texture path2!\n");
 	}
 	*texture = ft_strdup(trim_path);
 	free(trim_path);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: babischa <babischa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 14:07:08 by madias-m          #+#    #+#             */
-/*   Updated: 2025/04/10 12:18:32 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/04/14 17:28:17 by babischa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,6 @@ int	main(int argc, char **argv)
 	mlx_close_hook(game()->mlx, close_window, NULL);
 	mlx_loop(game()->mlx);
 	mlx_terminate(game()->mlx);
+	cleanup_memory();
 	return (0);
 }

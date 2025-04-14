@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_color.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: babischa <babischa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 14:01:20 by babischa          #+#    #+#             */
-/*   Updated: 2025/04/10 13:14:45 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/04/14 17:28:01 by babischa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ void	handle_color(char *line, uint32_t *color)
 			color_error(rgb, line);
 		}
 		i++;
+		free(tmp);
 	}
 	*color = convert_color(ft_atoi(rgb[0]), ft_atoi(rgb[1]), ft_atoi(rgb[2]));
 	free_matrix(rgb);
