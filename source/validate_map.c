@@ -6,19 +6,18 @@
 /*   By: babischa <babischa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 14:18:33 by babischa          #+#    #+#             */
-/*   Updated: 2025/04/14 13:30:18 by babischa         ###   ########.fr       */
+/*   Updated: 2025/04/14 19:50:52 by babischa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-int is_player(char c)
+int	is_player(char c)
 {
 	if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
 		return (1);
 	return (0);
 }
-
 
 void	validate_players(char **matrix)
 {
@@ -50,9 +49,10 @@ void	validate_characters(char **matrix)
 	while (*matrix)
 	{
 		line = *matrix;
-		while(*line)
+		while (*line)
 		{
-			if (!(is_player(*line)|| *line == '1' || *line == '0' || *line == ' ' || *line == '\n'))
+			if (!(is_player(*line) || *line == '1' \
+			|| *line == '0' || *line == ' ' || *line == '\n'))
 				manage_error("Error: Invalid character");
 			line++;
 		}
@@ -60,7 +60,7 @@ void	validate_characters(char **matrix)
 	}
 }
 
-void validate_map(void)
+void	validate_map(void)
 {
 	validate_players(game()->map);
 	validate_characters(game()->map);
@@ -70,7 +70,7 @@ void validate_map(void)
 void	replace_spaces_and_tabs(char **matrix)
 {
 	int	i;
-	int j;
+	int	j;
 
 	i = 0;
 	while (matrix[i])

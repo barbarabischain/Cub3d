@@ -6,7 +6,7 @@
 /*   By: babischa <babischa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 10:05:07 by babischa          #+#    #+#             */
-/*   Updated: 2025/04/14 14:44:20 by babischa         ###   ########.fr       */
+/*   Updated: 2025/04/14 19:49:21 by babischa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,9 @@ void	validate_walls(char **matrix)
 		j = 0;
 		while (matrix[i][j])
 		{
-			if (matrix[i][j] == '0' || matrix[i][j] == 'N' || matrix[i][j] == 'S' || matrix[i][j] == 'E' || matrix[i][j] == 'W')
+			if (matrix[i][j] == '0' || matrix[i][j] == 'N' \
+				|| matrix[i][j] == 'S' || matrix[i][j] == 'E' \
+				|| matrix[i][j] == 'W')
 				check_borders(matrix, i, j);
 			j++;
 		}

@@ -6,19 +6,13 @@
 /*   By: babischa <babischa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 15:45:22 by madias-m          #+#    #+#             */
-/*   Updated: 2025/04/14 17:45:06 by babischa         ###   ########.fr       */
+/*   Updated: 2025/04/14 19:48:08 by babischa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-// void	cleanup_game(void)
-// {
-// 	if (!game())
-// 		return ;
-// }
-
-void	cleanup_textures()
+void	cleanup_textures(void)
 {
 	if (game()->textures->north_tex)
 		mlx_delete_texture(game()->textures->north_tex);
