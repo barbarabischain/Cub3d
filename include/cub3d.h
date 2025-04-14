@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: babischa <babischa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 14:14:49 by madias-m          #+#    #+#             */
-/*   Updated: 2025/04/10 13:03:25 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/04/14 13:28:14 by babischa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ void	handle_color(char *line, uint32_t *color);
 void	get_map(char	*line, int fd);
 void	set_player_initial_pos(void);
 void	validate_map(void);
+void	validate_walls(char **matrix);
 
 /***	Parsing Utils ***/
 void	free_matrix(char **matrix);

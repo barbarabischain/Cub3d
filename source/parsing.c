@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: babischa <babischa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 11:39:53 by babischa          #+#    #+#             */
-/*   Updated: 2025/04/10 13:15:09 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/04/14 13:29:56 by babischa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	handle_mapfile(char *file)
 	close(fd);
 	game()->max_y = count_lines(game()->map);
 	game()->max_x = count_columns(game()->map);
+	validate_map();
 }
 
 void	validate_extension(char *file)
