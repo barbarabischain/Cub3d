@@ -6,7 +6,7 @@
 /*   By: babischa <babischa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 14:18:33 by babischa          #+#    #+#             */
-/*   Updated: 2025/04/14 19:50:52 by babischa         ###   ########.fr       */
+/*   Updated: 2025/04/17 10:19:18 by babischa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,17 @@ void	validate_characters(char **matrix)
 	}
 }
 
+// void	validate_map_end(char **matrix)
+// {
+
+// }
+
 void	validate_map(void)
 {
 	validate_players(game()->map);
 	validate_characters(game()->map);
 	validate_walls(game()->map);
+	// validate_end(game()->map);
 }
 
 void	replace_spaces_and_tabs(char **matrix)
