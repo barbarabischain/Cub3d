@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_texture.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: babischa <babischa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 15:45:22 by madias-m          #+#    #+#             */
-/*   Updated: 2025/04/14 14:48:35 by babischa         ###   ########.fr       */
+/*   Updated: 2025/04/17 16:19:26 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,19 @@ int	is_valid_path(char *path)
 	return (1);
 }
 
-void	handle_texture(char *line, char **texture)
+void	finish_get_line(int fd)
+{
+	char *line;
+
+	line = get_next_line(fd);
+	while (line)
+	{
+		free(line);
+		line = get_next_line(fd);
+	}
+}
+
+void	handle_texture(char *line, char **texture, int fd)
 {
 	char	**split_path;
 	char	*trim_path;
@@ -60,14 +72,17 @@ void	handle_texture(char *line, char **texture)
 	{
 		free(line);
 		free_matrix(split_path);
-		manage_error("Error: invalid texture path1!\n");
+		finish_get_line(fd);
+		manage_error("Error: invalid texture path!\n");
 	}
 	trim_path = ft_strtrim(split_path[1], "\n\t\b\v\r");
 	free_matrix(split_path);
 	if (!is_valid_path(trim_path))
 	{
+		free(trim_path);
 		free(line);
-		manage_error("Error: invalid texture path2!\n");
+		finish_get_line(fd);
+		manage_error("Error: invalid texture path!\n");
 	}
 	*texture = ft_strdup(trim_path);
 	free(trim_path);

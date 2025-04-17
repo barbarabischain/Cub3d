@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 14:14:49 by madias-m          #+#    #+#             */
-/*   Updated: 2025/04/17 11:33:59 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/04/17 16:15:51 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ void	close_window(void *param);
 void	validate(int argc, char **argv);
 void	manage_error(char *error);
 void	get_data_in_file(int fd);
-void	handle_texture(char *line, char **texture);
+void	handle_texture(char *line, char **texture, int fd);
 void	handle_color(char *line, uint32_t *color);
 void	get_map(char	*line, int fd);
 void	set_player_initial_pos(void);
