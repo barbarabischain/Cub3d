@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: babischa <babischa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 14:14:49 by madias-m          #+#    #+#             */
-/*   Updated: 2025/04/14 16:37:55 by babischa         ###   ########.fr       */
+/*   Updated: 2025/04/17 11:33:59 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,10 @@ int		count_lines(char **matrix);
 int		count_columns(char **matrix);
 void	cleanup_memory(void);
 
-/***	Renderizer Utils***/
+/***	Validate Map Utils ***/
+int		is_player(char c);
+
+/***	Renderizer Utils ***/
 void	calc_ray_directions(int width_pixel, t_coordinates *coord);
 void	calc_delta_distance(t_coordinates *coord);
 void	calc_player_position(t_coordinates *coord);

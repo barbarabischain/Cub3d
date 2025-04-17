@@ -3,21 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   validate_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: babischa <babischa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 14:18:33 by babischa          #+#    #+#             */
-/*   Updated: 2025/04/17 10:19:18 by babischa         ###   ########.fr       */
+/*   Updated: 2025/04/17 11:37:37 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
-
-int	is_player(char c)
-{
-	if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
-		return (1);
-	return (0);
-}
 
 void	validate_players(char **matrix)
 {
@@ -53,24 +46,34 @@ void	validate_characters(char **matrix)
 		{
 			if (!(is_player(*line) || *line == '1' \
 			|| *line == '0' || *line == ' ' || *line == '\n'))
-				manage_error("Error: Invalid character");
+				manage_error("Error: Invalid character\n");
 			line++;
 		}
 		matrix++;
 	}
 }
 
-// void	validate_map_end(char **matrix)
-// {
+void	validate_map_end(char **matrix)
+{
+	int	map_ended;
 
-// }
+	map_ended = 0;
+	while (*matrix && map_ended == 0)
+	{
+		if (ft_strlen(*matrix) == 1 && **matrix == '\n')
+			map_ended = 1;
+		matrix++;
+	}
+	if (*matrix && ft_strlen(*matrix) > 1 && map_ended)
+		manage_error("Error: Invalid map\n");
+}
 
 void	validate_map(void)
 {
 	validate_players(game()->map);
 	validate_characters(game()->map);
 	validate_walls(game()->map);
-	// validate_end(game()->map);
+	validate_map_end(game()->map);
 }
 
 void	replace_spaces_and_tabs(char **matrix)
