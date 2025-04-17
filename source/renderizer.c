@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 14:29:36 by madias-m          #+#    #+#             */
-/*   Updated: 2025/04/10 13:00:42 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/04/17 16:46:55 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,8 @@ void	render_loop(void *param)
 	(void)param;
 	erase_image();
 	x = 0;
+	ft_printf("max_y: %d\n", game()->max_y);
+	ft_printf("max_x: %d\n", game()->max_x);
 	while (x < game()->mlx->width)
 	{
 		calc_environment(x, game()->coord);
