@@ -17,7 +17,7 @@ SRC_PUSH	:=	main \
 				handle_texture handle_color get_map validate_map validate_walls\
 				key_hook renderizer movement \
 				error close_window find_player renderizer_utils draw_wall\
-				validate_map_utils
+				validate_map_utils finish_get_line
 
 OBJ_PUSH	:=	$(addprefix objects/, $(addsuffix .o, $(SRC_PUSH)))
 

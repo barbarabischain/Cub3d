@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 15:45:22 by madias-m          #+#    #+#             */
-/*   Updated: 2025/04/25 16:53:33 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/04/25 18:30:24 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,16 +45,11 @@ int	is_valid_path(char *path)
 	return (1);
 }
 
-void	finish_get_line(int fd)
+void	texture_error(int fd, char *line, char *error)
 {
-	char	*line;
-
-	line = get_next_line(fd);
-	while (line)
-	{
-		free(line);
-		line = get_next_line(fd);
-	}
+	free(line);
+	finish_get_line(fd);
+	manage_error(error);
 }
 
 void	handle_texture(char *line, char **texture, int fd)
@@ -63,27 +58,19 @@ void	handle_texture(char *line, char **texture, int fd)
 	char	*trim_path;
 
 	if (*texture != NULL)
-	{
-		free(line);
-		finish_get_line(fd);
-		manage_error("Error: duplicate texture!\n");
-	}
+		texture_error(fd, line, "Error: duplicate texture!\n");
 	split_path = ft_split(line, ' ');
 	if (!split_path || !split_path[0] || !split_path[1])
 	{
 		free_matrix(split_path);
-		free(line);
-		finish_get_line(fd);
-		manage_error("Error: invalid texture path!\n");
+		texture_error(fd, line, "Error: invalid texture path!\n");
 	}
 	trim_path = ft_strtrim(split_path[1], "\n\t\b\v\r");
 	free_matrix(split_path);
 	if (!is_valid_path(trim_path))
 	{
 		free(trim_path);
-		free(line);
-		finish_get_line(fd);
-		manage_error("Error: invalid texture path!\n");
+		texture_error(fd, line, "Error: invalid texture path!\n");
 	}
 	*texture = ft_strdup(trim_path);
 	free(trim_path);
