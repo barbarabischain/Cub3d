@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 14:07:08 by madias-m          #+#    #+#             */
-/*   Updated: 2025/04/24 17:09:15 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/04/25 18:05:21 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,14 +58,6 @@ int	main(int argc, char **argv)
 	validate(argc, argv);
 	init_game_window();
 	set_player_initial_pos();
-	printf("max_X-> %d\n", game()->max_x);
-	printf("max_Y-> %d\n", game()->max_y);
-	printf("p_posX-> %f\n", game()->coord->pos_x);
-	printf("p_posY-> %f\n", game()->coord->pos_y);
-	printf("p_dirX-> %f\n", game()->coord->dir_x);
-	printf("p_dirY-> %f\n", game()->coord->dir_y);
-	printf("p_planeX-> %f\n", game()->coord->plane_x);
-	printf("p_planeY-> %f\n", game()->coord->plane_y);
 	mlx_loop_hook(game()->mlx, render_loop, NULL);
 	mlx_loop_hook(game()->mlx, new_movement, game());
 	mlx_key_hook(game()->mlx, key_hook, NULL);
