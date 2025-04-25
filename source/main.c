@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 14:07:08 by madias-m          #+#    #+#             */
-/*   Updated: 2025/04/25 18:05:21 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/04/25 19:02:12 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@ t_game	*game(void)
 
 void	init_data(void)
 {
-	game()->ceiling = -42;
-	game()->floor = -42;
 	(game())->textures = ft_calloc(1, sizeof(t_textures));
 	(game())->coord = ft_calloc(1, sizeof(t_coordinates));
 	game()->map_list = NULL;
@@ -57,6 +55,7 @@ int	main(int argc, char **argv)
 	init_data();
 	validate(argc, argv);
 	init_game_window();
+	load_textures();
 	set_player_initial_pos();
 	mlx_loop_hook(game()->mlx, render_loop, NULL);
 	mlx_loop_hook(game()->mlx, new_movement, game());

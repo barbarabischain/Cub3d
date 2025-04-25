@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 14:01:20 by babischa          #+#    #+#             */
-/*   Updated: 2025/04/25 16:50:48 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/04/25 19:02:35 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,6 @@ void	handle_color(char *line, uint32_t *color, int fd)
 	char	*tmp;
 	int		i;
 
-	rgb = NULL;
-	if (*color != (uint32_t)-42)
-		color_error(rgb, line, fd);
 	rgb = process_line(line, fd);
 	i = 0;
 	while (rgb[i])
