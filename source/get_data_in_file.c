@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 14:07:43 by babischa          #+#    #+#             */
-/*   Updated: 2025/04/25 18:23:02 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/04/25 18:51:46 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int	check_data(void)
 	if (!game()->ceiling)
 		return (0);
 	if (!game()->floor)
+		return (0);
+	if (!game()->map)
 		return (0);
 	return (1);
 }
@@ -77,5 +79,4 @@ void	get_data_in_file(int fd)
 	}
 	if (!check_data())
 		manage_error("Error: Missing data in file.\n");
-	load_textures(); // tirar daqui
 }
