@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 14:07:43 by babischa          #+#    #+#             */
-/*   Updated: 2025/04/17 16:15:14 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/04/25 16:49:42 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,20 +29,29 @@ int	check_data(void)
 	return (1);
 }
 
-void	get_textures_colors(char *tmp, int fd)
-{
+void	get_textures_colors(char *line, int start, int fd)
+{	
+	char	*tmp;
+
+	tmp = line + start;
 	if (!ft_strncmp("NO", tmp, 2))
-		handle_texture(tmp, &game()->textures->north_path, fd);
+		handle_texture(line, &game()->textures->north_path, fd);
 	else if (!ft_strncmp("SO", tmp, 2))
-		handle_texture(tmp, &game()->textures->south_path, fd);
+		handle_texture(line, &game()->textures->south_path, fd);
 	else if (!ft_strncmp("WE", tmp, 2))
-		handle_texture(tmp, &game()->textures->west_path, fd);
+		handle_texture(line, &game()->textures->west_path, fd);
 	else if (!ft_strncmp("EA", tmp, 2))
-		handle_texture(tmp, &game()->textures->east_path, fd);
+		handle_texture(line, &game()->textures->east_path, fd);
 	else if (!ft_strncmp("F", tmp, 1))
-		handle_color(tmp, &game()->floor);
+		handle_color(line, &game()->floor, fd);
 	else if (!ft_strncmp("C", tmp, 1))
-		handle_color(tmp, &game()->ceiling);
+		handle_color(line, &game()->ceiling, fd);
+	else
+	{
+		free(line);
+		finish_get_line(fd);
+		manage_error("ERROR: Invalid character!\n");
+	}
 }
 
 void	get_data_in_file(int fd)
@@ -62,7 +71,7 @@ void	get_data_in_file(int fd)
 			break ;
 		}
 		else if (*tmp != '\0' && *tmp != '\n')
-			get_textures_colors(tmp, fd);
+			get_textures_colors(line, tmp - line, fd);
 		free(line);
 		line = get_next_line(fd);
 	}

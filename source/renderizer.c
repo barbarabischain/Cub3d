@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 14:29:36 by madias-m          #+#    #+#             */
-/*   Updated: 2025/04/24 12:06:40 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/04/25 16:52:27 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,6 @@ void	render_loop(void *param)
 	(void)param;
 	erase_image();
 	x = 0;
-
 	while (x < game()->mlx->width)
 	{
 		calc_environment(x, game()->coord);

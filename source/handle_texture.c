@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 15:45:22 by madias-m          #+#    #+#             */
-/*   Updated: 2025/04/17 16:19:26 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/04/25 16:53:33 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	is_valid_path(char *path)
 
 void	finish_get_line(int fd)
 {
-	char *line;
+	char	*line;
 
 	line = get_next_line(fd);
 	while (line)
@@ -65,13 +65,14 @@ void	handle_texture(char *line, char **texture, int fd)
 	if (*texture != NULL)
 	{
 		free(line);
+		finish_get_line(fd);
 		manage_error("Error: duplicate texture!\n");
 	}
 	split_path = ft_split(line, ' ');
 	if (!split_path || !split_path[0] || !split_path[1])
 	{
-		free(line);
 		free_matrix(split_path);
+		free(line);
 		finish_get_line(fd);
 		manage_error("Error: invalid texture path!\n");
 	}

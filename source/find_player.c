@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 12:07:57 by madias-m          #+#    #+#             */
-/*   Updated: 2025/04/25 16:18:29 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/04/25 16:28:13 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ void	set_player_initial_pos(void)
 		{
 			if (ft_strchr("NSWE", game()->map[y][x]) && game()->map[y][x] != 0)
 			{
-				printf("x: %d ueh\n", game()->map[y][x]);
 				game()->coord->pos_x = x + 0.5;
 				game()->coord->pos_y = y + 0.5;
 				set_camera_inital_pos(game()->map[y][x]);
