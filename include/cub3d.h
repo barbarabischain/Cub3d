@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 14:14:49 by madias-m          #+#    #+#             */
-/*   Updated: 2025/04/25 16:51:09 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/04/28 11:01:55 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,7 @@ void	cleanup_memory(void);
 
 /***	Validate Map Utils ***/
 int		is_player(char c);
+int		count_comma(char *str);
 
 /***	Renderizer Utils ***/
 void	calc_ray_directions(int width_pixel, t_coordinates *coord);

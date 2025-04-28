@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 14:01:20 by babischa          #+#    #+#             */
-/*   Updated: 2025/04/25 19:02:35 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/04/28 11:01:06 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,19 @@ void	color_error(char **matrix, char *line, int fd)
 
 int	is_valid_color(char	*rgb_element)
 {
-	while (*rgb_element)
+	int	i;
+	int	value;
+
+	i = 0;
+	while (rgb_element[i])
 	{
-		if (!ft_isdigit(*rgb_element))
+		if (!ft_isdigit(rgb_element[i]))
 			return (0);
-		rgb_element++;
+		i++;
 	}
+	value = ft_atoi(rgb_element);
+	if (value > 255 || value < 0)
+		return (0);
 	return (1);
 }
 
@@ -44,6 +51,8 @@ char	**process_line(char	*line, int fd)
 	char	**rgb;
 
 	rgb = NULL;
+	if (count_comma(line) != 2)
+		color_error(rgb, line, fd);
 	trim_line = ft_strtrim(line, "FC \t\v\f\r\n\b");
 	rgb = ft_split(trim_line, ',');
 	free(trim_line);
