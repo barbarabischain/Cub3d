@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 14:18:33 by babischa          #+#    #+#             */
-/*   Updated: 2025/04/17 11:37:37 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/04/29 11:18:19 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	validate_characters(char **matrix)
 		while (*line)
 		{
 			if (!(is_player(*line) || *line == '1' \
-			|| *line == '0' || *line == ' ' || *line == '\n'))
+			|| *line == '0' || ft_isspace(*line) || *line == '\n'))
 				manage_error("Error: Invalid character\n");
 			line++;
 		}
